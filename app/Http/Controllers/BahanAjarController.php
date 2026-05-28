@@ -13,8 +13,7 @@ class BahanAjarController extends Controller
     public function index()
     {
         $materi = \App\Models\BahanAjar::all(); 
-        
-        return view('akademik.BahanAjar', compact('materi'));
+        return view('perkuliahan.BahanAjar', compact('materi'));
     }
 
     /**

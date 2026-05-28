@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Bahan Ajar - LINTAR</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        .header-title { background-color: #333; color: white; padding: 10px; font-weight: bold; }
-        .btn-bahan { padding: 5px 15px; margin: 15px 0; border: 1px solid #ccc; cursor: pointer; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f9f9f9; }
-    </style>
-</head>
-<body>
+@extends('layouts.main')
 
-    <div class="header-title">AKADEMIK - BAHAN AJAR</div>
+@section('page')
     
-    <button class="btn-bahan">Bahan Ajar</button>
+<style>
+    /* 1. Desain Kotak Judul */
+    .header-title { background-color: #333; color: white; padding: 10px; font-weight: bold; margin-bottom: 15px; }
     
-    <div>
+    /* 2. Desain Tombol */
+    .btn-action { padding: 5px 15px; margin-bottom: 15px; border: 1px solid #ccc; cursor: pointer; background-color: #f9f9f9; }
+    
+    /* 3. Desain Tabel Utama */
+    .table-data { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 15px; }
+    .table-data th, .table-data td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    .table-data th { background-color: #f4f4f4; }
+    
+    /* 4. Desain Teks Tambahan */
+    .text-center { text-align: center; }
+    .text-blue { color: blue; }
+    .text-red { color: red; }
+</style>
+
+    <div class="header-title">PERKULIAHAN - BAHAN AJAR</div>
+    
+    <button class="btn-action">Bahan Ajar</button>
+    
+    <div style="margin-bottom: 15px;">
         <label>Pilih Tahun akademik :</label>
         <select>
             <option>Genap 2025</option>
@@ -25,7 +32,7 @@
         </select>
     </div>
 
-    <table>
+    <table class="table-data">
         <thead>
             <tr>
                 <th>#</th>
@@ -58,11 +65,10 @@
             </tr>
             @empty
             <tr>
-                <td colspan="11" style="text-align: center;">Belum ada data matakuliah.</td>
+                <td colspan="11" style="text-align: center; color: #888;">Belum ada data matakuliah.</td>
             </tr>
             @endforelse
         </tbody>
     </table>
 
-</body>
-</html>
+@endsection
