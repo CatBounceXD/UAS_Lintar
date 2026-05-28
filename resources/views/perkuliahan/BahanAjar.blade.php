@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <div class="header-title">AKADEMIK - BAHAN AJAR</div>
+    <div class="header-title">PERKULIAHAN - BAHAN AJAR</div>
     
     <button class="btn-bahan">Bahan Ajar</button>
     
