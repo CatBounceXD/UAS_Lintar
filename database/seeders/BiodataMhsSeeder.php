@@ -3,13 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\biodataMhs; // Memanggil model biodataMhs kamu
+use App\Models\biodata; 
 
 class BiodataMhsSeeder extends Seeder
 {
     public function run(): void
     {
-        biodataMhs::create([
+        biodata::create([
             // DATA MAHASISWA
             'npm'                  => '535250159',
             'nama_mahasiswa'       => 'SUMAYYA KAYLANI',

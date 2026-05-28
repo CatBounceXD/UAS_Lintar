@@ -96,7 +96,7 @@
                 </tr>
             @else
                 <tr>
-                    <td colspan="2" style="text-align: center;">Data mahasiswa belum diisi di database.</td>
+                    <td colspan="2" style="text-align: center;">Data mahasiswa belum ada. Silakan isi tabel biodata_mhs di database terlebih dahulu.</td>
                 </tr>
             @endif
         </tbody>
