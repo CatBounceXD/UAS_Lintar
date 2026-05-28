@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\KatalogBukuController;
+use App\Http\Controllers\KatalogSkripsiController;
 use App\Http\Controllers\BahanAjarController;
 use App\Http\Controllers\RpsController;
 use App\Http\Controllers\SuratKeteranganController;
@@ -17,3 +19,5 @@ Route::get('/surat-keterangan', [SuratKeteranganController::class, 'index']);
 Route::get('/surat-permohonan', [SuratPermohonanController::class, 'index']);
 Route::get('/lengkapData', [lengkapDataController::class, 'index']);
 Route::get('/biodata', [BiodataMhsController::class, 'index']);
+Route::get('/buku', [KatalogBukuController::class, 'index']);
+Route::get('/skripsi', [KatalogSkripsiController::class, 'index']);
