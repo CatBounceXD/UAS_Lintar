@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\biodataMhs; 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller; 
+use App\Models\Biodata;           
 
-class BiodataMhsController extends Controller
+class BiodataMhsController extends Controller 
 {
     public function index()
     {
-        $biodata = biodataMhs::first();
+        
+        $biodata = biodata::first();
 
+        
         return view('biodataMhs', compact('biodata'));
     }
 }

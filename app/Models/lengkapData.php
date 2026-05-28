@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class biodataMhs extends Model
+class lengkapData extends Model
 {
-    protected $table = 'biodata_mhs';
+    use HasFactory;
+
+    protected $table = 'lengkap_datas';
 
     protected $fillable = [
         'npm', 'nama_mahasiswa', 'no_rekening', 'tempat_tanggal_lahir', 
