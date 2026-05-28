@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/biodata', [BiodataMhsController::class, 'index']);
 use App\Http\Controllers\BahanAjarController;
 use App\Http\Controllers\RpsController;
 use App\Http\Controllers\SuratKeteranganController;
 use App\Http\Controllers\SuratPermohonanController;
 use App\Http\Controllers\AjuanCutiController;
+use App\Http\Controllers\BiodataMhsController;
 
 Route::get('/bahan-ajar', [BahanAjarController::class, 'index']);
 Route::get('/rps', [RpsController::class, 'index']);
