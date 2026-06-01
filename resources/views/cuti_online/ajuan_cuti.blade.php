@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuti Online - Ajuan Cuti</title>
-</head>
-<body>
+@extends('layouts.main')
+
+@section('page')
 
     <h2>CUTI ONLINE - AJUAN CUTI</h2>
     <hr>
@@ -72,6 +67,5 @@
     
     <p>Daftar Pengajuan Cuti Akademik</p>
     <p><i>Belum ada data pengajuan cuti akademik.</i></p>
-
-</body>
-</html>
+    
+ @endsection

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Layanan Mahasiswa - Surat Keterangan</title>
-</head>
-<body>
+@extends('layouts.main')
+
+@section('page')
 
     <h2 style="background-color: #333; color: white; padding: 5px;">LAYANAN MAHASISWA - SURAT KETERANGAN</h2>
     
@@ -42,6 +38,4 @@
         </tr>
         @endforelse
     </table>
-
-</body>
-</html>
+@endsection

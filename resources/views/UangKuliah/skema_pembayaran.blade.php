@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Pilihan Metode Pembayaran BPP</title>
-</head>
-<body style="font-family: Arial, sans-serif; margin: 20px; color: #333;">
+@extends('layouts.main')
+
+@section('page')
 
     @foreach($dataSkema as $data)
     <div style="background-color: #222; color: #fff; padding: 10px; font-weight: bold; font-size: 16px; margin-bottom: 15px;">
@@ -28,7 +24,7 @@
             BAYAR SECARA FULL/PENUH, KLIK DISINI
         </button>
     </a>
-</td>
+    </td>
     </table>
 
     <p><strong>ATAU</strong></p>
@@ -44,13 +40,13 @@
                 Termin 2: {{ $data->va_termin2 }} {{ $data->nominal_termin2 }} rentang bayar 28 Juli s.d. 23 Agustus 2026<br>
                 <strong>Total tagihan skema TERMIN:{{ $data->total_termin }}</strong>
             </td>
-<td align="right" width="40%" valign="top">
-    <a href="/tagihan-pembayaran" style="text-decoration: none;">
-        <button style="padding: 10px; font-weight: bold; background-color: #f5f5f5; border: 1px solid #333; cursor: pointer;">
-            BAYAR SECARA TERMIN/CICILAN, KLIK DISINI
-        </button>
-    </a>
-</td>
+    <td align="right" width="40%" valign="top">
+        <a href="/tagihan-pembayaran" style="text-decoration: none;">
+            <button style="padding: 10px; font-weight: bold; background-color: #f5f5f5; border: 1px solid #333; cursor: pointer;">
+                BAYAR SECARA TERMIN/CICILAN, KLIK DISINI
+            </button>
+        </a>
+    </td>
     </table>
 
     <p style="font-size: 16px;">
@@ -67,5 +63,4 @@
     <p><i>jangan lupa lakukan pembayaran sesuai waktu yang sudah ditentukan agar proses akademik anda lancar dan tertib. Terima kasih, salam sehat dan sukses selalu.</i></p>
     @endforeach
 
-</body>
-</html>
+@endsection

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Uang Kuliah - Dispensasi Penundaan BPP</title>
-</head>
-<body>
+@extends('layouts.main')
+
+@section('page')
 
     <!-- Judul Halaman -->
     <h2>UANG KULIAH - DISPENSASI PENUNDAAN BPP</h2>
@@ -80,5 +76,4 @@
     <p style="color: red; font-weight: bold;">Belum ada data pengajuan dispensasi BPP di database.</p>
     @endforelse
 
-</body>
-</html>
+@endsection

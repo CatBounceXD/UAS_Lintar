@@ -1,155 +1,85 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('layouts.main')
 
-    <title>Katalog Skripsi</title>
+@section('page')
 
-</head>
+    <style>
+        .header-title { background-color: #2c3e50; color: white; padding: 10px 15px; font-weight: bold; border-radius: 5px; margin-bottom: 20px; }
+        
+        .filter-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px; }
+        .filter-table td { padding: 10px; border: 1px solid #ddd; }
+        .filter-table .bg-gray { background-color: #f4f4f4; font-weight: bold; width: 20%; }
+        
+        .table-data { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .table-data th, .table-data td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .table-data th { background-color: #e9ecef; color: #333; }
+        
+        .table-data tbody tr:nth-child(even) { background-color: #f9f9f9; }
+        .table-data tbody tr:nth-child(odd) { background-color: #ffffff; }
+        .table-data tbody tr:hover { background-color: #f1f1f1; }
+        
+        .form-input { padding: 6px; border: 1px solid #ccc; border-radius: 4px; }
+        .btn-cari { padding: 6px 15px; background-color: #f1c40f; color: #333; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-cari:hover { background-color: #d4ac0d; }
+    </style>
 
-<body>
+    <div class="header-title">PERPUSTAKAAN - KATALOG SKRIPSI</div>
 
-    <h2>
-        PERPUSTAKAAN - KATALOG SKRIPSI
-    </h2>
-
-    <hr>
-
-    <table border="1" width="100%" cellpadding="5">
-
-        <tr bgcolor="#dddddd">
-
-            <td width="25%">
-                Fakultas
-            </td>
-
+    <table class="filter-table">
+        <tr>
+            <td class="bg-gray">Fakultas</td>
             <td>
-
-                <select>
-
+                <select class="form-input">
                     <option>Teknik</option>
                     <option>Ekonomi</option>
                     <option>Hukum</option>
                     <option>FISIP</option>
-
                 </select>
-
             </td>
-
         </tr>
-
-        <tr bgcolor="#eeeeee">
-
+        <tr>
+            <td class="bg-gray">Pencarian</td>
             <td>
-                Pencarian
-            </td>
-
-            <td>
-
-                <form action="/katalog-skripsi" method="GET">
-
-                    <input
-                        type="text"
-                        name="search"
-                        placeholder="Judul Skripsi"
-                    >
-
-                    <button type="submit">
-                        Cari
-                    </button>
-
+                <form action="/katalog-skripsi" method="GET" style="margin: 0;">
+                    <input type="text" name="search" class="form-input" placeholder="Judul Skripsi" style="width: 250px;">
+                    <button type="submit" class="btn-cari">Cari</button>
                 </form>
-
             </td>
-
         </tr>
-
     </table>
 
-    <br>
+    <h3 style="margin-top: 25px; color: #2c3e50;">Daftar Judul Skripsi / Tesis</h3>
 
-    <h3>
-        Daftar Judul Skripsi / Tesis
-    </h3>
-
-    <table border="1" width="100%" cellpadding="5">
-
-        <tr bgcolor="#cccc99">
-
-            <th>Pilih</th>
-
-            <th>No</th>
-
-            <th>Judul Skripsi</th>
-
-            <th>Pengarang</th>
-
-            <th>Fakultas</th>
-
-            <th>Tahun</th>
-
-        </tr>
-
-        @foreach($skripsi as $item)
-
-        <tr
-
-            @if($loop->iteration % 2 == 0)
-
-                bgcolor="#ffcccc"
-
-            @else
-
-                bgcolor="#ccccff"
-
-            @endif
-
-        >
-
-            <td align="center">
-
-                <input type="checkbox">
-
-            </td>
-
-            <td>
-
-                {{ $loop->iteration }}
-
-            </td>
-
-            <td>
-
-                {{ $item->judul_skripsi }}
-
-            </td>
-
-            <td>
-
-                {{ $item->pengarang }}
-
-            </td>
-
-            <td>
-
-                {{ $item->fakultas }}
-
-            </td>
-
-            <td>
-
-                {{ $item->tahun }}
-
-            </td>
-
-        </tr>
-
-        @endforeach
-
+    <table class="table-data">
+        <thead>
+            <tr>
+                <th style="text-align: center; width: 50px;">Pilih</th>
+                <th style="text-align: center; width: 50px;">No</th>
+                <th>Judul Skripsi</th>
+                <th>Pengarang</th>
+                <th>Fakultas</th>
+                <th>Tahun</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($skripsi as $item)
+            <tr>
+                <td style="text-align: center;"><input type="checkbox"></td>
+                <td style="text-align: center;">{{ $loop->iteration }}</td>
+                <td>{{ $item->judul_skripsi }}</td>
+                <td>{{ $item->pengarang }}</td>
+                <td>{{ $item->fakultas }}</td>
+                <td style="text-align: center;">{{ $item->tahun }}</td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="6" style="text-align: center; color: #888; padding: 15px;">Belum ada data skripsi.</td>
+            </tr>
+            @endforelse
+        </tbody>
     </table>
 
-    <br>
+    <div style="margin-top: 20px;">
+        {{ $skripsi->links() }}
+    </div>
 
-    {{ $skripsi->links() }}
-
-</body>
-</html>
+@endsection

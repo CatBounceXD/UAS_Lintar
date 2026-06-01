@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\MBKM;
 
 use Illuminate\Http\Request;
-use App\Models\LaporanMbkm;
+use App\Models\MBKM\LaporanMbkm;
+use App\Http\Controllers\Controller;
 
 class LaporanMbkmController extends Controller
 {
@@ -12,6 +13,6 @@ class LaporanMbkmController extends Controller
         // Mengambil data pertama dari tabel laporan_mbkms
         $laporan = LaporanMbkm::first();
         
-        return view('laporan_mbkm', compact('laporan'));
+        return view('MBKM.laporan_mbkm', compact('laporan'));
     }
 }
