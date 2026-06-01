@@ -6,26 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up():void
     {
         Schema::create('surat_keterangans', function (Blueprint $table) {
             $table->id();
-            $table->string('no');
+            // INI PENGHUBUNG KE TABEL USERS (Mahasiswa)
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            
+            $table->string('no')->nullable();
             $table->string('tanggal');
-            $table->string('no_surat');
+            $table->string('no_surat')->nullable();
             $table->string('jenis_surat_keterangan');
             $table->string('bahasa');
-            $table->string('view_pdf');
+            $table->string('view_pdf')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('surat_keterangans');

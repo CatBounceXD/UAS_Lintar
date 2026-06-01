@@ -4,12 +4,11 @@ namespace App\Models\Biodata;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class lengkapData extends Model
 {
     use HasFactory;
 
-    protected $table = 'lengkap_datas';
+    protected $table = 'biodata_mhs';
 
     protected $fillable = [
         'npm', 'nama_mahasiswa', 'no_rekening', 'tempat_tanggal_lahir', 
@@ -17,4 +16,9 @@ class lengkapData extends Model
         'asal_sekolah', 'no_ijazah', 'tgl_ijazah',
         'nama_orang_tua', 'alamat_orang_tua', 'telepon_orang_tua'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

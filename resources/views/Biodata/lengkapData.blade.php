@@ -3,7 +3,6 @@
 @section('page')
 
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
         .header-bar { background-color: #222; color: white; padding: 10px; font-weight: bold; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
         .nav-links { font-size: 12px; }
         .nav-links span { color: white; margin-left: 10px; }

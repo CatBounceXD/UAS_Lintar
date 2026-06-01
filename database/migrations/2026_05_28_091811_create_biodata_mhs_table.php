@@ -10,9 +10,10 @@ return new class extends Migration
     {
         Schema::create('biodata_mhs', function (Blueprint $table) {
             $table->id();
-            // DATA MAHASISWA
-            $table->string('npm')->unique();
-            $table->string('nama_mahasiswa');
+            // Relasi ke User
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            
+            // Kolom NPM, Nama, dan Email dihapus
             $table->string('no_rekening')->nullable();
             $table->string('tempat_tanggal_lahir');
             $table->string('jenis_kelamin');
@@ -20,7 +21,6 @@ return new class extends Migration
             $table->text('alamat');
             $table->string('telepon')->nullable();
             $table->string('handphone')->nullable();
-            $table->string('email')->unique();
             
             // DATA SEKOLAH
             $table->string('asal_sekolah');

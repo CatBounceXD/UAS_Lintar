@@ -6,26 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-        public function up():void
+    public function up():void
     {
         Schema::create('surat_permohonans', function (Blueprint $table) {
             $table->id();
-            $table->string('no');
-            $table->date('tanggal'); // Sesuai request, ini pakai tipe date
-            $table->string('no_surat');
+            // INI PENGHUBUNG KE TABEL USERS (Mahasiswa)
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            
+            $table->string('no')->nullable();
+            $table->date('tanggal'); 
+            $table->string('no_surat')->nullable();
             $table->string('jenis_permohonan');
             $table->string('bahasa');
-            $table->string('view_pdf');
+            $table->string('view_pdf')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('surat_permohonans');
