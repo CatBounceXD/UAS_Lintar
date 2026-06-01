@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Uang Kuliah - Informasi Tagihan & Pembayaran</title>
-</head>
-<body style="font-family: Arial, sans-serif; margin: 20px; color: #333; font-size: 13px;">
+@extends('layouts.main')
+
+@section('page')
 
     <!-- Header Utama Sesuai Gambar image_890d19.jpg -->
     <div style="background-color: #222; color: #fff; padding: 10px; font-weight: bold; font-size: 15px; margin-bottom: 15px;">
@@ -72,5 +68,4 @@
         </table>
     @endforeach
 
-</body>
-</html>
+@endsection

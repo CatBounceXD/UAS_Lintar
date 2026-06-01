@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Uang Kuliah - Dispensasi Penundaan SKS</title>
-</head>
-<body>
+@extends('layouts.main')
+
+@section('page')
 
     <!-- Judul Header Atas Sesuai Gambar image_8993fe.png -->
     <h2>UANG KULIAH - DISPENSASI PENUNDAAN SKS</h2>
@@ -74,5 +70,4 @@
     </table>
     @endforeach
 
-</body>
-</html>
+@endsection

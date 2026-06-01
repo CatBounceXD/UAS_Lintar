@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIODATA MAHASISWA</title>
+@extends('layouts.main')
+
+@section('page')
+
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
         .header-bar { background-color: #222; color: white; padding: 10px; font-weight: bold; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
@@ -17,8 +15,6 @@
         .section-header { font-weight: bold; color: white; }
         .bg-grey { background-color: #eaeaea; }
     </style>
-</head>
-<body>
 
     @if(!$lengkapData || empty($lengkapData->no_ijazah) || empty($lengkapData->nama_orang_tua))
         
@@ -103,5 +99,4 @@
 
     @endif
 
-</body>
-</html>
+@endsection

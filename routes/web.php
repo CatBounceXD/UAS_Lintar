@@ -39,3 +39,7 @@ Route::get('/dispensasi-bpp', [DispensasiBppController::class, 'index']);
 Route::get('/dispensasi-sks', [DispensasiSksController::class, 'index']);
 Route::get('/uang-kuliah', [SkemaPembayaranController::class, 'index']);
 Route::get('/tagihan-pembayaran', [TagihanPembayaranController::class, 'index']);
+
+// MBKM
+use App\Http\Controllers\MBKM\LaporanMbkmController;
+Route::get('/mbkm', [LaporanMbkmController::class, 'index']); 
