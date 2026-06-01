@@ -1,17 +1,13 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    public function up(): void
-    {
+return new class extends Migration {
+    public function up(): void {
         Schema::create('skema_pembayarans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nim');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('semester_tahun');
             $table->string('va_full');
             $table->string('nominal_full');
@@ -24,9 +20,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
-    public function down(): void
-    {
+    public function down(): void {
         Schema::dropIfExists('skema_pembayarans');
     }
 };

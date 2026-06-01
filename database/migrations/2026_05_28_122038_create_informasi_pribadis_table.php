@@ -6,26 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-   public function up():void
+    public function up():void
     {
         Schema::create('informasi_pribadis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('npm');
+            // Relasi ke User
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            
+            // Kolom nama, npm, dan email dihapus karena sudah ada di Users
             $table->string('fakultas_prodi');
             $table->string('alamat');
             $table->string('telepon');
-            $table->string('email');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('informasi_pribadis');
