@@ -9,15 +9,13 @@ class TagihanPembayaranController extends Controller
 {
     public function index()
     {
-        // SAKTI: Kita bungkus pakai try-catch. Jadi kalau database belum siap/belum di-migrate,
-        // aplikasi kamu GAK AKAN error atau crash lagi!
+       
         try {
             $dataTagihan = TagihanPembayaran::all();
         } catch (\Exception $e) {
-            $dataTagihan = collect([]); // Jika database error, otomatis dibuat kosong agar lanjut ke data cadangan
+            $dataTagihan = collect([]); 
         }
 
-        // Trik Darurat: Jika database kosong atau belum di-migrate, isi data dummy otomatis
         if ($dataTagihan->isEmpty()) {
             $dataTagihan = [
                 // Data Semester Genap
@@ -61,7 +59,6 @@ class TagihanPembayaranController extends Controller
             ];
         }
 
-        // Mengelompokkan data berdasarkan tahun_akademik agar rapi di View
         $groupedTagihan = collect($dataTagihan)->groupBy('tahun_akademik');
 
         return view('tagihan_pembayaran.index', compact('groupedTagihan'));
