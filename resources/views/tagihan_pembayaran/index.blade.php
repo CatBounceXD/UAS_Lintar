@@ -6,12 +6,11 @@
 </head>
 <body style="font-family: Arial, sans-serif; margin: 20px; color: #333; font-size: 13px;">
 
-    <!-- Header Utama Sesuai Gambar image_890d19.jpg -->
+
     <div style="background-color: #222; color: #fff; padding: 10px; font-weight: bold; font-size: 15px; margin-bottom: 15px;">
         UANG KULIAH - INFORMASI
     </div>
 
-    <!-- Teks Aturan Informasi Virtual Account -->
     <strong>Informasi Untuk mahasiswa tentang VA :</strong>
     <ol style="line-height: 1.5; margin-top: 5px; margin-bottom: 20px;">
         <li>Untuk seluruh mahasiswa pembayaran melalui VA (Virtual Account)</li>
@@ -28,10 +27,8 @@
         <li>Apabila melakukan pembayaran Full Payment, maka tagihan cicilan (termin) akan dihapus. Sedangkan apabila melakukan pembayaran cicilan (termin) 01, maka tagihan full payment akan dihapus dan sesuai dengan jadwalnya akan dibuatkan tagihan cicilan (termin) 02.</li>
     </ol>
 
-    <!-- Identitas Pemilik Akun -->
     <p style="margin-bottom: 5px;">Data Uang Kuliah: <strong>SEKAR ARUMA PUTRI (535250167)</strong></p>
 
-    <!-- Loop untuk memisahkan tabel per semester -->
     @foreach($groupedTagihan as $tahunAkademik => $daftarTagihan)
         <p style="margin-top: 15px; margin-bottom: 5px; font-weight: bold;">Tahun Akademik: {{ $tahunAkademik }}</p>
         
