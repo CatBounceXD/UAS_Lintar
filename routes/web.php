@@ -30,6 +30,14 @@ use App\Http\Controllers\layanan_mahasiswa\SuratPermohonanController;
 Route::get('/surat-keterangan', [SuratKeteranganController::class, 'index']);
 Route::get('/surat-permohonan', [SuratPermohonanController::class, 'index']);
 
+use App\Http\Controllers\SuratKeterangan\PengajuanController;
+
+Route::prefix('layanan-mahasiswa')->group(function () {
+    Route::get('/', [PengajuanController::class, 'index'])->name('layanan.index');
+    Route::post('/store', [PengajuanController::class, 'store'])->name('layanan.store');
+    Route::get('/{pengajuan}', [PengajuanController::class, 'show'])->name('layanan.show');
+});
+
 // Uang Kuliah
 use App\Http\Controllers\UangKuliah\DispensasiBppController;
 use App\Http\Controllers\UangKuliah\DispensasiSksController;
