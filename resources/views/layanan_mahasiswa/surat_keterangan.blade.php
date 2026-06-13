@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('isi_halaman')
+@section('page')
 <style>
     .card-container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .header-title { background-color: #333; color: white; padding: 10px 15px; font-weight: bold; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
@@ -102,6 +102,12 @@
                         <label><input type="radio" name="jenis_surat" value="Kantor Orang Tua"> Kantor Orang Tua (Parent Office)</label>
                         <label><input type="radio" name="jenis_surat" value="Kerja Praktek"> Kerja Praktek (Job Training)</label>
                         <label><input type="radio" name="jenis_surat" value="Magang"> Magang (Internship)</label>
+                        <label><input type="radio" name="jenis_surat" value="Mahasiwa Aktif"> Mahasiswa Aktif (Active Student)</label>
+                        <label><input type="radio" name="jenis_surat" value="Mengurus BPJS"> Mengurus BPJS (BPJS Administration)</label>
+                        <label><input type="radio" name="jenis_surat" value="Permohonan Passport"> Permohonan Passport (Passport Application)</label>
+                        <label><input type="radio" name="jenis_surat" value="Permohonan Visa"> Permohonan Visa (Visa Application)</label>
+                        <label><input type="radio" name="jenis_surat" value="Survei"> Survei (Survey)</label>
+                        <label><input type="radio" name="jenis_surat" value="Tugas Akhir"> Tugas Akhir (Thesis)</label>
                     </div>
                 </div>
             </div>
@@ -178,14 +184,12 @@
     }
 
     function changeStep(direction) {
-        // Validasi Checkbox di langkah 3 sebelum lanjut atau submit
         if (currentStep === 3 && direction === 1) {
             const isChecked = document.getElementById('persetujuan').checked;
             if (!isChecked) {
                 alert('Anda belum melakukan cek Persetujuan.');
-                return; // Stop eksekusi jika tidak dicentang
+                return; 
             }
-            // Jika dicentang, form disubmit
             document.getElementById('form-pengajuan').submit();
             return;
         }
@@ -199,7 +203,6 @@
     }
 
     function updateUI() {
-        // Update Tabs
         for(let i=1; i<=4; i++) {
             let tab = document.getElementById('tab-'+i);
             if(tab) {
@@ -208,7 +211,6 @@
             }
         }
 
-        // Update Sections
         for(let i=1; i<=3; i++) {
             let section = document.getElementById('step-'+i);
             if(section) {
@@ -217,7 +219,6 @@
             }
         }
 
-        // Update Buttons
         document.getElementById('btn-prev').style.display = currentStep === 1 ? 'none' : 'inline-block';
         document.getElementById('btn-next').innerText = currentStep === totalSteps ? 'Kirim Pengajuan' : 'Next >';
     }
