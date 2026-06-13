@@ -4,7 +4,6 @@
 
 
     <div style="background-color: #222; color: #fff; padding: 10px; font-weight: bold; font-size: 15px; margin-bottom: 15px;">
-        UANG KULIAH - INFORMASI
     </div>
 
     <strong>Informasi Untuk mahasiswa tentang VA :</strong>
