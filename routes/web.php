@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return view('home');
+});
+
 // Perkuliahan
 use App\Http\Controllers\Perkuliahan\BahanAjarController;
 use App\Http\Controllers\Perkuliahan\RpsController;
