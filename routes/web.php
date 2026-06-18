@@ -49,6 +49,7 @@ use App\Http\Controllers\UangKuliah\SkemaPembayaranController;
 use App\Http\Controllers\UangKuliah\TagihanPembayaranController;
 Route::get('/dispensasi-bpp', [DispensasiBppController::class, 'index']);
 Route::get('/dispensasi-sks', [DispensasiSksController::class, 'index']);
+Route::get('/skema-pembayaran', [SkemaPembayaranController::class, 'index']);
 Route::get('/uang-kuliah', [SkemaPembayaranController::class, 'index']);
 Route::get('/tagihan-pembayaran', [TagihanPembayaranController::class, 'index']);
 
