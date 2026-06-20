@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
         
         $this->call([
             BiodataMhsSeeder::class,
+            UbahPasswordSeeder::class,
+            SkpiMhsSeeder::class,
         ]);
     }
 }

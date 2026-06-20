@@ -17,8 +17,21 @@ Route::get('/skripsi', [KatalogSkripsiController::class, 'index']);
 // Biodata
 use App\Http\Controllers\Biodata\lengkapDataController;
 use App\Http\Controllers\Biodata\BiodataMhsController;
+use App\Http\Controllers\Biodata\UpdateNoHpController;
+use App\Http\Controllers\Biodata\UbahPasswordController;
 Route::get('/lengkapdata', [lengkapDataController::class, 'index']);
+Route::get('/lengkapdata/dashboard', [lengkapDataController::class, 'proses']);
 Route::get('/biodata', [BiodataMhsController::class, 'index']);
+Route::get('/updatenohp', [UpdateNoHpController::class, 'index']);
+Route::get('/ubah-password', [UbahPasswordController::class, 'index']);
+
+//SKPI
+use App\Http\Controllers\SKPI\SkpiMhsController;
+use App\Http\Controllers\SKPI\IsiSkpiController;
+Route::get('/bukti-skpi', [SkpiMhsController::class, 'index']);
+Route::get('/isi-skpi', [IsiSkpiController::class, 'index']);
+Route::get('/isi-skpi/tambah', [IsiSkpiController::class, 'create']);
+Route::post('/isi-skpi/simpan', [IsiSkpiController::class, 'store']);
 
 // Cuti Online
 use App\Http\Controllers\cuti_online\AjuanCutiController;

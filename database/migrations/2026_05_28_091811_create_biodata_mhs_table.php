@@ -10,10 +10,14 @@ return new class extends Migration
     {
         Schema::create('biodata_mhs', function (Blueprint $table) {
             $table->id();
-            // Relasi ke User
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             
-            // Kolom NPM, Nama, dan Email dihapus
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+            
+            $table->string('npm')->unique();
+            $table->string('nama_mahasiswa');
+            $table->string('email')->unique();
+            $table->integer('is_aktif_2021')->default(1); // 1 = Aktif
+
             $table->string('no_rekening')->nullable();
             $table->string('tempat_tanggal_lahir');
             $table->string('jenis_kelamin');
