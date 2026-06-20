@@ -139,8 +139,8 @@
                     <p style="text-align: left;">Rektor Universitas Tarumanagara menerangkan bahwa:</p>
                     
                     <div class="surat-grid">
-                        <span>Nama</span><span>:</span><strong>YAEL REHUELLAH</strong>
-                        <span>NIM</span><span>:</span><strong>535250175</strong>
+                        <span>Nama</span><span>:</span><strong>{{ $riwayatPengajuan->user->name }}</strong>
+                        <span>NIM</span><span>:</span><strong>{{  $riwayatPengajuan->user->nim }}</strong>
                         <span>SKS</span><span>:</span><strong>16</strong>
                         <span>IPK</span><span>:</span><strong>3.43</strong>
                         <span>Fakultas</span><span>:</span>

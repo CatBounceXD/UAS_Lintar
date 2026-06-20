@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User; // Import model User
-use Illuminate\Support\Facades\Auth; // Import Facade Auth
+use App\Models\User;
+use App\Models\Pengumuman;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $user = Auth::user() ?? User::first();
-        return view('home', compact('user'));
+
+        $pengumuman = Pengumuman::where('tipe', 'pengumuman')->get();
+        $informasi = Pengumuman::where('tipe', 'informasi')->get();
+
+        return view('home', compact('user', 'pengumuman', 'informasi'));
     }
 }

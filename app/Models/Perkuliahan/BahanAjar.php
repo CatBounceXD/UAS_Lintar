@@ -12,6 +12,7 @@ class BahanAjar extends Model
     protected $table = 'bahan_ajar';
 
     protected $fillable = [
+        'user_id',
         'kode_matkul', 
         'nama_matkul', 
         'kelas', 
@@ -22,4 +23,9 @@ class BahanAjar extends Model
         'file_sap', 
         'email_dosen'
     ];
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
