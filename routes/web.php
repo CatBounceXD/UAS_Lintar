@@ -5,6 +5,24 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index']); 
 
+// Akademik
+use App\Http\Controllers\Akademik\HistoriNilaiController;
+use App\Http\Controllers\Akademik\KsmController;
+use App\Http\Controllers\Akademik\KehadiranController;
+use App\Http\Controllers\Akademik\KhsController;
+use App\Http\Controllers\Akademik\UtsController;
+use App\Http\Controllers\Akademik\TranskripController;
+use App\Http\Controllers\Akademik\KalenderController;
+use \App\Http\Controllers\Akademik\StatusKuliahController;
+Route::get('/histori-nilai', [HistoriNilaiController::class, 'index']);
+Route::get('/ksm', [KsmController::class, 'index']);
+Route::get('/kehadiran', [KehadiranController::class, 'index']);
+Route::get('/khs', [KhsController::class, 'index']);
+Route::get('/uts', [UtsController::class, 'index']);
+Route::get('/transkrip', [TranskripController::class, 'index']);
+Route::get('/kalender-akademik', [KalenderController::class, 'index']);
+Route::get('/status-kuliah', [StatusKuliahController::class, 'index']);
+
 // Perkuliahan
 use App\Http\Controllers\Perkuliahan\BahanAjarController;
 use App\Http\Controllers\Perkuliahan\RpsController;

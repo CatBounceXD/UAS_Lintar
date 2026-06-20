@@ -139,11 +139,11 @@
                     <p style="text-align: left;" id="preview-pembuka">Rektor Universitas Tarumanagara menerangkan bahwa:</p>
                     
                     <div class="surat-grid">
-                        <span id="lbl-nama">Nama</span><span>:</span><strong>{{ $user->name ?? '-' }}</strong>
-                        <span id="lbl-nim">NIM</span><span>:</span><strong>{{ $user->nim ?? '-' }}</strong>
-                        <span id="lbl-sks">SKS</span><span>:</span><strong>{{ $user->sks ?? 16 }}</strong>
-                        <span id="lbl-ipk">IPK</span><span>:</span><strong>{{ $user->ipk ?? 3.43 }}</strong>
-                        <span id="lbl-fakultas">Fakultas</span><span>:</span>
+                        <span>Nama</span><span>:</span><strong>{{ $riwayatPengajuan->user->name }}</strong>
+                        <span>NIM</span><span>:</span><strong>{{  $riwayatPengajuan->user->nim }}</strong>
+                        <span>SKS</span><span>:</span><strong>16</strong>
+                        <span>IPK</span><span>:</span><strong>3.43</strong>
+                        <span>Fakultas</span><span>:</span>
                         <select name="fakultas">
                             <option value="Teknologi Informasi">Teknologi Informasi</option>
                         </select>

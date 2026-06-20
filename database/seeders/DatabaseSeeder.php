@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
             BiodataMhsSeeder::class,
             DispensasiBppSeeder::class,
             DispensasiSksSeeder::class,
+            PengumumanSeeder::class,
+            BahanAjarSeeder::class,
+            RpsSeeder::class,
+            StudiMahasiswaSeeder::class,
+            KalenderAkademikSeeder::class,
         ]);
     }
 }

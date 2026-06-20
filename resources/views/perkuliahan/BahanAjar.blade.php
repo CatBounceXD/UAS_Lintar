@@ -22,7 +22,7 @@
 
     <div class="header-title">PERKULIAHAN - BAHAN AJAR</div>
     
-    <button class="btn-action">Bahan Ajar</button>
+    <!-- <button class="btn-action">Bahan Ajar</button> -->
     
     <div style="margin-bottom: 15px;">
         <label>Pilih Tahun akademik :</label>
@@ -35,7 +35,7 @@
     <table class="table-data">
         <thead>
             <tr>
-                <th>#</th>
+                <!-- <th>#</th> -->
                 <th>No</th>
                 <th>Kode</th>
                 <th>Mata Kuliah (sks)</th>
@@ -51,7 +51,7 @@
         <tbody>
             @forelse($materi as $index => $data)
             <tr>
-                <td><input type="radio" name="pilih_matkul"></td>
+                <!-- <td><input type="radio" name="pilih_matkul"></td> -->
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $data->kode_matkul }}</td>
                 <td>{{ $data->nama_matkul }}</td>
