@@ -118,6 +118,23 @@
         </div>
         <ul>
             <li><a href="/">🔗 Halaman Utama</a></li>
+
+            <li>
+                <details class="menu-folder">
+                    <summary>📂 Akademik</summary>
+                    <ul class="submenu">
+                        <li><a href="/histori-nilai">🔗 Histori Nilai</a></li>
+                        <li><a href="/bahan-ajar">🔗 Jadwal Kuliah</a></li>
+                        <li><a href="/kalender-akademik">🔗 Kalender Akademik</a></li>
+                        <li><a href="/ksm">🔗 kartu Studi Mahasiswa</a></li>
+                        <li><a href="/kehadiran">🔗 Kehadiran</a></li>
+                        <li><a href="/khs">🔗 Nilai KHS</a></li>
+                        <li><a href="/uts">🔗 Nilai UTS</a></li>
+                        <li><a href="/status-kuliah">🔗 Status Kuliah</a></li>
+                        <li><a href="/transkrip">🔗 Transkrip</a></li>
+                    </ul>
+                </details>
+            </li>
             
             <li>
                 <details class="menu-folder">

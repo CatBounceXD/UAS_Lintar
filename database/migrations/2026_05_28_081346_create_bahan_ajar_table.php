@@ -13,6 +13,7 @@ return new class extends Migration
     {
             Schema::create('bahan_ajar', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('kode_matkul');
             $table->string('nama_matkul'); 
             $table->string('kelas');
