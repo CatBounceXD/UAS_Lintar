@@ -11,7 +11,7 @@ class DispensasiSksController extends Controller
     public function index()
     {
    
-        $dataSks = DispensasiSks::all();
+        $dataSks = DispensasiSks::where('user_id', 1)->first();
 
         return view('UangKuliah.dispensasi_sks', compact('dataSks'));
     }

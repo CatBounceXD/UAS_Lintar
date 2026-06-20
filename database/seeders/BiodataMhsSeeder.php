@@ -3,24 +3,22 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\biodata; 
+use App\Models\Biodata\biodata; 
 
 class BiodataMhsSeeder extends Seeder
 {
     public function run(): void
     {
+        // (NIM: 535250001)
         biodata::create([
-            // DATA MAHASISWA
-            'npm'                  => '535250159',
-            'nama_mahasiswa'       => 'SUMAYYA KAYLANI',
+            'user_id'              => 1,
             'no_rekening'          => null,
-            'tempat_tanggal_lahir' => 'TANGERANG , 28/05/2007',
+            'tempat_tanggal_lahir' => 'TANGERANG, 28/05/2007',
             'jenis_kelamin'        => 'WANITA',
             'agama'                => 'ISLAM',
-            'alamat'               => 'JL BERSAMA 3 NO 79, BELENDUNG, BENDA, KOTA TANGERANG, BANTEN KOTA TANGERANG 15123',
+            'alamat'               => 'JL BERSAMA 3 NO 79, BELENDUNG, BENDA, KOTA TANGERANG, BANTEN 15123',
             'telepon'              => '-',
             'handphone'            => '08988676169',
-            'email'                => 'sumayya.535250159@stu.untar.ac.id',
             
             // DATA SEKOLAH
             'asal_sekolah'         => 'SMAIT AL MAKA KOTA JAKARTA BARAT',
@@ -29,8 +27,11 @@ class BiodataMhsSeeder extends Seeder
             
             // DATA ORANG TUA
             'nama_orang_tua'       => 'LILIS SURYANI',
-            'alamat_orang_tua'     => 'JL BERSAMA 3 NO 79, BELENDUNG, BENDA, KOTA TANGERANG, BANTEN KOTA TANGERANG 15123',
+            'alamat_orang_tua'     => 'JL BERSAMA 3 NO 79, BELENDUNG, BENDA, KOTA TANGERANG, BANTEN 15123',
             'telepon_orang_tua'    => '-',
         ]);
+
+        // Opsional: Anda bisa copy block biodata::create() di atas 
+        // dan ubah 'user_id' => 2 untuk melengkapi data Siswa 2, dan seterusnya.
     }
 }
