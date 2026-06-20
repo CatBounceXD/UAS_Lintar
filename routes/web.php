@@ -11,8 +11,10 @@ Route::get('/rps', [RpsController::class, 'index']);
 // Perpustakaan
 use App\Http\Controllers\Perpustakaan\KatalogBukuController;
 use App\Http\Controllers\Perpustakaan\KatalogSkripsiController;
+use App\Http\Controllers\perpustakaan\QuesionerController;
 Route::get('/buku', [KatalogBukuController::class, 'index']);
 Route::get('/skripsi', [KatalogSkripsiController::class, 'index']);
+Route::get('/quesioner', [QuesionerController::class, 'index']);
 
 // Biodata
 use App\Http\Controllers\Biodata\lengkapDataController;
