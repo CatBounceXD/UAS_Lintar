@@ -4,6 +4,7 @@ namespace App\Models\UangKuliah;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class DispensasiBpp extends Model
 {
@@ -14,9 +15,9 @@ class DispensasiBpp extends Model
 
     // Mendaftarkan kolom-kolom yang diizinkan untuk diisi data
     protected $fillable = [
-        'nama',
+        'name',
         'nim',
-        'fakultas_prodi',
+        'prodi',
         'alamat',
         'no_telepon',
         'tahun_akademik',
@@ -25,4 +26,9 @@ class DispensasiBpp extends Model
         'tanggal_pengajuan',
         'alasan_pengajuan'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
