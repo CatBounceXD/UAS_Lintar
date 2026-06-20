@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+use App\Http\Controllers\HomeController;
+Route::get('/', [HomeController::class, 'index']); 
 
 // Perkuliahan
 use App\Http\Controllers\Perkuliahan\BahanAjarController;
@@ -35,8 +34,7 @@ Route::get('/surat-keterangan', [SuratKeteranganController::class, 'index']);
 Route::get('/surat-permohonan', [SuratPermohonanController::class, 'index']);
 
 use App\Http\Controllers\SuratKeterangan\PengajuanController;
-
-Route::prefix('layanan-mahasiswa')->group(function () {
+    Route::prefix('layanan-mahasiswa')->group(function () {
     Route::get('/', [PengajuanController::class, 'index'])->name('layanan.index');
     Route::post('/store', [PengajuanController::class, 'store'])->name('layanan.store');
     Route::get('/{pengajuan}', [PengajuanController::class, 'show'])->name('layanan.show');
@@ -49,6 +47,7 @@ use App\Http\Controllers\UangKuliah\SkemaPembayaranController;
 use App\Http\Controllers\UangKuliah\TagihanPembayaranController;
 Route::get('/dispensasi-bpp', [DispensasiBppController::class, 'index']);
 Route::get('/dispensasi-sks', [DispensasiSksController::class, 'index']);
+Route::get('/skema-pembayaran', [SkemaPembayaranController::class, 'index']);
 Route::get('/uang-kuliah', [SkemaPembayaranController::class, 'index']);
 Route::get('/tagihan-pembayaran', [TagihanPembayaranController::class, 'index']);
 

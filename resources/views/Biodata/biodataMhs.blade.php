@@ -13,13 +13,18 @@
                 <tr style="background-color: teal; color: white; font-weight: bold;">
                     <td colspan="2">DATA MAHASISWA</td>
                 </tr>
+               <!-- UBAH BAGIAN NPM -->
                 <tr>
                     <td width="30%">NPM</td>
-                    <td><b>{{ $biodata->npm }}</b></td>
+                    <!-- Aslinya: $biodata->npm -->
+                    <td><b>{{ $biodata->user->nim }}</b></td> <!-- Di tabel users, kolomnya bernama 'nim' -->
                 </tr>
+
+                <!-- UBAH BAGIAN NAMA -->
                 <tr style="background-color: lightgrey;">
                     <td>NAMA MAHASISWA</td>
-                    <td><b>{{ $biodata->nama_mahasiswa }}</b></td>
+                    <!-- Aslinya: $biodata->nama_mahasiswa -->
+                    <td><b>{{ $biodata->user->name }}</b></td> <!-- Di tabel users, kolomnya bernama 'name' -->
                 </tr>
                 <tr>
                     <td>NO.REKENING</td>
@@ -51,7 +56,7 @@
                 </tr>
                 <tr style="background-color: lightgrey;">
                     <td>EMAIL</td>
-                    <td><b style="color: blue;">{{ $biodata->email }}</b></td>
+                    <td><b style="color: blue;">{{ $biodata->user->email }}</b></td>
                 </tr>
 
                 <tr><td colspan="2" style="background-color: white; border: none; height: 15px;"></td></tr>

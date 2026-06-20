@@ -20,5 +20,5 @@ class User extends Authenticatable
     }
 
     // RELASI KE SEMUA FITUR ANAK BISA DITULIS DI SINI NANTI
-    public function biodata() { return $this->hasOne(Biodata\biodata::class); }
+    public function biodata() { return $this->hasOne(\App\Models\Biodata\biodata::class); }
 }

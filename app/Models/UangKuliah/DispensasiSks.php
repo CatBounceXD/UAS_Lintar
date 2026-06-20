@@ -4,6 +4,7 @@ namespace App\Models\UangKuliah;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class DispensasiSks extends Model
 {
@@ -14,9 +15,9 @@ class DispensasiSks extends Model
 
     // Mendaftarkan 9 kolom sesuai request kamu
     protected $fillable = [
-        'nama',
-        'nomor_pokok_siswa',
-        'fakultas_prodi',
+        'name',
+        'nim',
+        'prodi',
         'alamat',
         'nomor_telepon',
         'tahun_akademik',
@@ -24,4 +25,8 @@ class DispensasiSks extends Model
         'tanggal_pengajuan',
         'alasan_pengajuan'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

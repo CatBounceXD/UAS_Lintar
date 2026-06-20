@@ -8,8 +8,7 @@ return new class extends Migration {
         Schema::create('dispensasi_skss', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->text('alamat');
-            $table->string('nomor_telepon');
+            
             $table->string('tahun_akademik');
             $table->string('status_pengajuan')->default('TIDAK DAPAT MENGAJUKAN');
             $table->date('tanggal_pengajuan')->nullable(); 
