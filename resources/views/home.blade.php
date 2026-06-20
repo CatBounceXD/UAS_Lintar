@@ -2,182 +2,169 @@
 
 @section('page')
     <style>
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr; /* Membagi kolom kiri (40%) dan kanan (60%) */
-            gap: 20px;
+        /* --- BUNGKUS UTAMA --- */
+        .home-container {
             font-family: Arial, sans-serif;
-            align-items: start;
-        }
-
-        /* --- STYLING KOLOM KIRI --- */
-        .left-column {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px; /* Jarak antar baris ke bawah */
         }
 
-        .menu-utama-header {
-            background-color: #222222; /* Kotak hitam panjang menu utama */
+        /* --- 1. BANNER MERAH (MENU UTAMA) --- */
+        .menu-banner {
+            background-color: #333; /* Warna merah khas seperti di main layout */
             color: #ffffff;
-            padding: 10px 15px;
+            padding: 12px 20px;
+            border-radius: 10px 10px 0 0;
+            font-size: 15px;
             font-weight: bold;
-            font-size: 13px;
             text-transform: uppercase;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        /* --- 2. KOTAK PROFIL (FULL WIDTH) --- */
         .profile-box {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            padding: 15px;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border: 0px 
+            padding: 20px;
         }
 
         .student-name {
             font-size: 18px;
             font-weight: bold;
-            color: #b30000; /* Warna merah khas UNTAR */
+            color: #b30000;
             margin-bottom: 8px;
         }
 
         .welcome-text {
-            font-size: 13px;
+            font-size: 14px;
             color: #333333;
             line-height: 1.6;
         }
 
-        .info-card-box {
+        /* --- 3. PEMBAGIAN BAWAH (KIRI & KANAN) --- */
+        .bottom-split {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr; /* Membagi layar 50% kiri, 50% kanan */
+            gap: 10px;
+        }
+
+        /* Kotak Info PKKMB (Kiri) */
+        .info-card {
             background-color: #ffffff;
             border: 1px solid #cccccc;
-            border-left: 4px solid #b30000; /* Aksen merah vertikal di sebelah kiri */
+            border-left: 4px solid #333; /* Garis merah penanda di kiri */
             padding: 15px;
             border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            height: fit-content;
         }
 
-        .info-card-box h5 {
+        .info-card h5 {
             margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 13px;
+            margin-bottom: 10px;
+            font-size: 14px;
             color: #222222;
             text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
-        .info-card-box p {
+        .info-card p {
             margin: 0;
-            font-size: 12px;
+            font-size: 13px;
             color: #555555;
             line-height: 1.5;
         }
 
-        /* --- STYLING KOLOM KANAN --- */
-        .right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .section-box {
+        /* Kotak Pengumuman (Kanan) */
+        .pengumuman-box {
             background-color: #ffffff;
             border: 1px solid #cccccc;
             border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            height: fit-content;
         }
 
-        .section-box-header {
-            background-color: #b30000; /* Bar merah judul tabel */
-            color: #ffffff;
-            padding: 10px 15px;
+        .pengumuman-header { /* Banner merah kecil untuk judul pengumuman */
+            border-bottom: 3px solid #333;
+            color: #b30000;
+            padding: 10px;
             font-weight: bold;
             font-size: 13px;
             text-transform: uppercase;
         }
 
-        .dashboard-table {
+        .pengumuman-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
+            font-size: 13px;
         }
 
-        .dashboard-table th {
-            background-color: #f5f5f5;
-            color: #333333;
-            font-weight: bold;
-            text-align: left;
-            padding: 10px;
-            border-bottom: 2px solid #cccccc;
-        }
-
-        .dashboard-table td {
-            padding: 10px;
+        .pengumuman-table td {
+            padding: 15px;
             border-bottom: 1px solid #eeeeee;
             color: #444444;
-            line-height: 1.4;
-        }
-
-        /* Efek baris belang-belang otomatis sesuai standar kita */
-        .dashboard-table tr:nth-child(even) {
-            background-color: #fafafa;
-        }
-
-        .text-link {
-            color: #b30000;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .text-link:hover {
-            text-decoration: underline;
-        }
-
-        .badge-lintar {
-            background: #e17055;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 10px;
-            font-weight: bold;
-        }
-
-        .badge-info {
-            background: #0984e3;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 10px;
-            font-weight: bold;
+            line-height: 1.5;
         }
     </style>
 
-    <div class="dashboard-container">
+    <div class="home-container">
         
-        <div class="left-column">
+        <div class="menu-banner">
+            Menu Utama
+        </div>
+
+        <div class="profile-box">
+            <div class="student-name">
+                {{ $user->name }}
+            </div>
+            <div class="welcome-text">
+                Selamat datang di ruang Lintar Mahasiswa, anda terdaftar sebagai mahasiswa 
+                <b>{{ $user->prodi }}</b> dengan ID 
+                <b>{{ $user->nim }}</b>.
+            </div>
+        </div>
+
+        <div class="bottom-split">
             
-            <div class="menu-utama-header">
-                Menu Utama
-            </div>
-
-            <div class="profile-box">
-                <div class="student-name">
-                    {{ $user->name }}
-                </div>
-                <div class="welcome-text">
-                    Selamat datang di ruang Lintar Mahasiswa, anda terdaftar sebagai mahasiswa 
-                    <b>{{ $user->prodi }}</b> dengan ID 
-                    <b>{{ $user->nim }}</b>.
-                </div>
-            </div>
-
-            <div class="info-card-box">
-                <h5>📋 Informasi PKKMB</h5>
+            <div class="info-card">
+                <h5>Informasi PKKMB Tahun 2025</h5>
                 <p>Status Kelulusan: <span style="color: green; font-weight: bold;">LULUS</span><br>
-                Sertifikat kelulusan PKKMB tingkat Universitas dapat divalidasi melalui Biro Kemahasiswaan.</p>
+                Informasi Pengenalan Kehidupan Kampus Mahasiswa baru 2025 (PKKMB) yang akan dilaksanakan pada tanggal 13 -15 Agustus 2025 dan 17 Agustus 2025.</p>
+            </div>
+            
+
+            <div class="pengumuman-box">
+                <div class="pengumuman-header">
+                    Pengumuman
+                </div>
+                <table class="pengumuman-table">
+                    <tbody>
+                        <tr>
+                            <td>Pengisian Kartu Rencana Studi (KRS) Semester Genap telah dibuka. Silakan periksa status akademis dan tagihan uang kuliah Anda pada menu yang tersedia.</td>
+                        </tr>
+                        </tbody>
+                </table>
             </div>
 
-            <div class="info-card-box
+            <div class="info-card">
+                <h5>BATAS MASA STUDI : SEMESTER GENAP 2031/2032</h5>
+            </div>
+
+            <div class="pengumuman-box">
+                <div class="pengumuman-header">
+                    Informasi
+                </div>
+                <table class="pengumuman-table">
+                    <tbody>
+                        <tr>
+                            <td>Pengisian Kartu Rencana Studi (KRS) Semester Genap telah dibuka. Silakan periksa status akademis dan tagihan uang kuliah Anda pada menu yang tersedia.</td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+            
+
+        </div>
+
+    </div>
+@endsection
