@@ -4,6 +4,7 @@ namespace App\Models\layanan_mahasiswa;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class SuratKeterangan extends Model
 {
@@ -17,4 +18,6 @@ class SuratKeterangan extends Model
         'bahasa', 
         'view_pdf'
     ];
+
+    public function user() { return $this->belongsTo(User::class); }
 }

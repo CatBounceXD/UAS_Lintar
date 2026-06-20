@@ -13,7 +13,6 @@
     
     /* 4. Desain Teks Tambahan */
     .text-center { text-align: center; }
-    .text-blue { color: blue; }
     .text-red { color: red; }
 </style>
 
@@ -38,7 +37,7 @@
                 <tr>
                     <td class="text-center">{{ $index + 1 }}</td>
                     <td>{{ $row->fakultas }}</td>
-                    <td class="text-blue">{{ $row->jurusan }}</td>
+                    <td class="text-center">{{ $row->jurusan }}</td>
                     <td>{{ $row->kode_matkul }} | {{ $row->nama_matkul }} | {{ $row->sks }} SKS</td>
                     <td class="text-center text-red">
                         @if($row->file_rps)

@@ -2,87 +2,100 @@
 
 @section('page')
     <style>
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr; /* Membagi kolom kiri (40%) dan kanan (60%) */
-            gap: 20px;
+        /* --- BUNGKUS UTAMA --- */
+        .home-container {
             font-family: Arial, sans-serif;
-            align-items: start;
-        }
-
-        /* --- STYLING KOLOM KIRI --- */
-        .left-column {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px; /* Jarak antar baris ke bawah */
         }
 
-        .menu-utama-header {
-            background-color: #222222; /* Kotak hitam panjang menu utama */
+        /* --- 1. BANNER MERAH (MENU UTAMA) --- */
+        .menu-banner {
+            background-color: #333; /* Warna merah khas seperti di main layout */
             color: #ffffff;
-            padding: 10px 15px;
+            padding: 12px 20px;
+            border-radius: 10px 10px 0 0;
+            font-size: 15px;
             font-weight: bold;
-            font-size: 13px;
             text-transform: uppercase;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        /* --- 2. KOTAK PROFIL (FULL WIDTH) --- */
         .profile-box {
+            padding: 10px 0px;
+        }
+
+        .student-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #b30000;
+            margin-bottom: 8px;
+        }
+
+        .welcome-text {
+            font-size: 14px;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* --- 3. PEMBAGIAN BAWAH (KIRI & KANAN) --- */
+        .bottom-split {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr; /* Membagi layar kiri dan kanan */
+            gap: 20px;
+        }
+
+        /* FORMAT BARU: Pembungkus kolom agar susunan kotak menumpuk rapat ke bawah */
+        .left-sub-column, .right-sub-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Menentukan jarak rapat antar kotak internal */
+        }
+
+        /* Kotak Info PKKMB & Masa Studi (Kiri) */
+        .info-card {
             background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-left: 4px solid #333; 
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .info-card h5 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #222222;
+            text-transform: uppercase;
+        }
+
+        .info-card p {
+            margin: 0;
+            font-size: 13px;
+            color: #555555;
+            line-height: 1.5;
+        }
+
+        .info-card2 {
+            background-color: #fdb8b8;
             border: 1px solid #cccccc;
             padding: 15px;
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .student-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: #b30000; /* Warna merah khas UNTAR */
-            margin-bottom: 8px;
-        }
-
-        .welcome-text {
-            font-size: 13px;
-            color: #333333;
-            line-height: 1.6;
-        }
-
-        .info-card-box {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-left: 4px solid #b30000; /* Aksen merah vertikal di sebelah kiri */
-            padding: 15px;
-            border-radius: 4px;
-        }
-
-        .info-card-box h5 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 13px;
-            color: #222222;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .info-card-box p {
+        .info-card2 p {
             margin: 0;
-            font-size: 12px;
-            color: #555555;
+            font-size: 14px;
+            color: #222222;
             line-height: 1.5;
         }
 
-        /* --- STYLING KOLOM KANAN --- */
-        .right-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .section-box {
+        /* Kotak Pengumuman & Informasi (Kanan) */
+        .pengumuman-box {
             background-color: #ffffff;
             border: 1px solid #cccccc;
             border-radius: 4px;
@@ -90,94 +103,110 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .section-box-header {
-            background-color: #b30000; /* Bar merah judul tabel */
-            color: #ffffff;
-            padding: 10px 15px;
+        .pengumuman-header { 
+            border-bottom: 3px solid #333;
+            color: #b30000;
+            padding: 10px;
             font-weight: bold;
             font-size: 13px;
             text-transform: uppercase;
         }
 
-        .dashboard-table {
+        .pengumuman-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
+            font-size: 13px;
         }
 
-        .dashboard-table th {
-            background-color: #f5f5f5;
-            color: #333333;
-            font-weight: bold;
-            text-align: left;
-            padding: 10px;
-            border-bottom: 2px solid #cccccc;
-        }
-
-        .dashboard-table td {
-            padding: 10px;
+        .pengumuman-table td {
+            padding: 12px 10px;
             border-bottom: 1px solid #eeeeee;
             color: #444444;
-            line-height: 1.4;
-        }
-
-        /* Efek baris belang-belang otomatis sesuai standar kita */
-        .dashboard-table tr:nth-child(even) {
-            background-color: #fafafa;
-        }
-
-        .text-link {
-            color: #b30000;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .text-link:hover {
-            text-decoration: underline;
-        }
-
-        .badge-lintar {
-            background: #e17055;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 10px;
-            font-weight: bold;
-        }
-
-        .badge-info {
-            background: #0984e3;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 10px;
-            font-weight: bold;
+            line-height: 1.5;
         }
     </style>
 
-    <div class="dashboard-container">
+    <div class="home-container">
         
-        <div class="left-column">
+        <div class="menu-banner">
+            Menu Utama
+        </div>
+
+        <div class="profile-box">
+            <div class="student-name">
+                {{ $user->name }}
+            </div>
+            <div class="welcome-text">
+                Selamat datang di ruang Lintar Mahasiswa, anda terdaftar sebagai mahasiswa 
+                <b>{{ $user->prodi }}</b> dengan ID 
+                <b>{{ $user->nim }}</b>.
+            </div>
+        </div>
+
+        <div class="bottom-split">
             
-            <div class="menu-utama-header">
-                Menu Utama
-            </div>
-
-            <div class="profile-box">
-                <div class="student-name">
-                    {{ $user->name }}
+            <div class="left-sub-column">
+                
+                <div class="info-card">
+                    <h5>Informasi PKKMB Tahun 2025</h5>
+                    <p>Status Kelulusan: <span style="color: green; font-weight: bold;">LULUS</span><br>
+                    Informasi Pengenalan Kehidupan Kampus Mahasiswa baru 2025 (PKKMB) yang akan dilaksanakan pada tanggal 13 -15 Agustus 2025 dan 17 Agustus 2025.</p>
                 </div>
-                <div class="welcome-text">
-                    Selamat datang di ruang Lintar Mahasiswa, anda terdaftar sebagai mahasiswa 
-                    <b>{{ $user->prodi }}</b> dengan ID 
-                    <b>{{ $user->nim }}</b>.
+
+                <div class="info-card">
+                    <h5>BATAS MASA STUDI : SEMESTER GENAP 2031/2032</h5>
+                </div>
+
+                <div class="info-card2">
+                    <p><strong>Username WIFI</strong> Anda adalah : <strong>{{ $user->nim }}</strong></p>
+                    <p><strong>Password WIFI</strong> Anda adalah : <strong>******</strong></p><br>
+                    <p>Gunakan <strong>Username</strong> dan <strong>Password WIFI</strong> di atas untuk dapat menggunakan WIFI UNTAR</p>
+                </div>
+
+            </div>
+            
+
+            <div class="right-sub-column">
+                
+                <div class="pengumuman-box">
+                    <div class="pengumuman-header">
+                        Pengumuman
+                    </div>
+                    <table class="pengumuman-table">
+                        <tbody>
+                            @forelse($pengumuman as $p)
+                                <tr>
+                                    <td>{{ $p->isi }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td style="color: #999; font-style: italic;">Tidak ada pengumuman terbaru saat ini.</td>
+                                end
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pengumuman-box">
+                    <div class="pengumuman-header">
+                        Informasi
+                    </div>
+                    <table class="pengumuman-table">
+                        <tbody>
+                            @forelse($informasi as $i)
+                                <tr>
+                                    <td>{{ $i->isi }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td style="color: #999; font-style: italic;">Tidak ada informasi akademik saat ini.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
-            <div class="info-card-box">
-                <h5>📋 Informasi PKKMB</h5>
-                <p>Status Kelulusan: <span style="color: green; font-weight: bold;">LULUS</span><br>
-                Sertifikat kelulusan PKKMB tingkat Universitas dapat divalidasi melalui Biro Kemahasiswaan.</p>
-            </div>
-
-            <div class="info-card-box
+        </div>
+    </div>
+@endsection
