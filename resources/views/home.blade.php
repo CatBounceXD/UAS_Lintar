@@ -24,8 +24,7 @@
 
         /* --- 2. KOTAK PROFIL (FULL WIDTH) --- */
         .profile-box {
-            border: 0px 
-            padding: 20px;
+            padding: 10px 0px;
         }
 
         .student-name {
@@ -44,19 +43,25 @@
         /* --- 3. PEMBAGIAN BAWAH (KIRI & KANAN) --- */
         .bottom-split {
             display: grid;
-            grid-template-columns: 1.3fr 0.7fr; /* Membagi layar 50% kiri, 50% kanan */
-            gap: 10px;
+            grid-template-columns: 1.3fr 0.7fr; /* Membagi layar kiri dan kanan */
+            gap: 20px;
         }
 
-        /* Kotak Info PKKMB (Kiri) */
+        /* FORMAT BARU: Pembungkus kolom agar susunan kotak menumpuk rapat ke bawah */
+        .left-sub-column, .right-sub-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Menentukan jarak rapat antar kotak internal */
+        }
+
+        /* Kotak Info PKKMB & Masa Studi (Kiri) */
         .info-card {
             background-color: #ffffff;
             border: 1px solid #cccccc;
-            border-left: 4px solid #333; /* Garis merah penanda di kiri */
+            border-left: 4px solid #333; 
             padding: 15px;
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            height: fit-content;
         }
 
         .info-card h5 {
@@ -74,17 +79,31 @@
             line-height: 1.5;
         }
 
-        /* Kotak Pengumuman (Kanan) */
+        .info-card2 {
+            background-color: #fdb8b8;
+            border: 1px solid #cccccc;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .info-card2 p {
+            margin: 0;
+            font-size: 14px;
+            color: #222222;
+            line-height: 1.5;
+        }
+
+        /* Kotak Pengumuman & Informasi (Kanan) */
         .pengumuman-box {
             background-color: #ffffff;
             border: 1px solid #cccccc;
             border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            height: fit-content;
         }
 
-        .pengumuman-header { /* Banner merah kecil untuk judul pengumuman */
+        .pengumuman-header { 
             border-bottom: 3px solid #333;
             color: #b30000;
             padding: 10px;
@@ -100,7 +119,7 @@
         }
 
         .pengumuman-table td {
-            padding: 15px;
+            padding: 12px 10px;
             border-bottom: 1px solid #eeeeee;
             color: #444444;
             line-height: 1.5;
@@ -126,45 +145,68 @@
 
         <div class="bottom-split">
             
-            <div class="info-card">
-                <h5>Informasi PKKMB Tahun 2025</h5>
-                <p>Status Kelulusan: <span style="color: green; font-weight: bold;">LULUS</span><br>
-                Informasi Pengenalan Kehidupan Kampus Mahasiswa baru 2025 (PKKMB) yang akan dilaksanakan pada tanggal 13 -15 Agustus 2025 dan 17 Agustus 2025.</p>
+            <div class="left-sub-column">
+                
+                <div class="info-card">
+                    <h5>Informasi PKKMB Tahun 2025</h5>
+                    <p>Status Kelulusan: <span style="color: green; font-weight: bold;">LULUS</span><br>
+                    Informasi Pengenalan Kehidupan Kampus Mahasiswa baru 2025 (PKKMB) yang akan dilaksanakan pada tanggal 13 -15 Agustus 2025 dan 17 Agustus 2025.</p>
+                </div>
+
+                <div class="info-card">
+                    <h5>BATAS MASA STUDI : SEMESTER GENAP 2031/2032</h5>
+                </div>
+
+                <div class="info-card2">
+                    <p><strong>Username WIFI</strong> Anda adalah : <strong>{{ $user->nim }}</strong></p>
+                    <p><strong>Password WIFI</strong> Anda adalah : <strong>******</strong></p><br>
+                    <p>Gunakan <strong>Username</strong> dan <strong>Password WIFI</strong> di atas untuk dapat menggunakan WIFI UNTAR</p>
+                </div>
+
             </div>
             
 
-            <div class="pengumuman-box">
-                <div class="pengumuman-header">
-                    Pengumuman
-                </div>
-                <table class="pengumuman-table">
-                    <tbody>
-                        <tr>
-                            <td>Pengisian Kartu Rencana Studi (KRS) Semester Genap telah dibuka. Silakan periksa status akademis dan tagihan uang kuliah Anda pada menu yang tersedia.</td>
-                        </tr>
+            <div class="right-sub-column">
+                
+                <div class="pengumuman-box">
+                    <div class="pengumuman-header">
+                        Pengumuman
+                    </div>
+                    <table class="pengumuman-table">
+                        <tbody>
+                            @forelse($pengumuman as $p)
+                                <tr>
+                                    <td>{{ $p->isi }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td style="color: #999; font-style: italic;">Tidak ada pengumuman terbaru saat ini.</td>
+                                end
+                                </tr>
+                            @endforelse
                         </tbody>
-                </table>
-            </div>
-
-            <div class="info-card">
-                <h5>BATAS MASA STUDI : SEMESTER GENAP 2031/2032</h5>
-            </div>
-
-            <div class="pengumuman-box">
-                <div class="pengumuman-header">
-                    Informasi
+                    </table>
                 </div>
-                <table class="pengumuman-table">
-                    <tbody>
-                        <tr>
-                            <td>Pengisian Kartu Rencana Studi (KRS) Semester Genap telah dibuka. Silakan periksa status akademis dan tagihan uang kuliah Anda pada menu yang tersedia.</td>
-                        </tr>
-                        </tbody>
-                </table>
-            </div>
-            
 
+                <div class="pengumuman-box">
+                    <div class="pengumuman-header">
+                        Informasi
+                    </div>
+                    <table class="pengumuman-table">
+                        <tbody>
+                            @forelse($informasi as $i)
+                                <tr>
+                                    <td>{{ $i->isi }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td style="color: #999; font-style: italic;">Tidak ada informasi akademik saat ini.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-
     </div>
 @endsection

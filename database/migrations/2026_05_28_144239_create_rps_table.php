@@ -13,6 +13,7 @@ public function up(): void
 {
     Schema::create('rps', function (Blueprint $table) {
         $table->id();
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         $table->string('fakultas');
         $table->string('jurusan');
         $table->string('kode_matkul');
