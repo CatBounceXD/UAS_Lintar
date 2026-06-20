@@ -42,6 +42,10 @@
     Data Quesioner Perpustakaan
 </div>
 
+<div style="margin-bottom: 15px; text-align: right;">
+    <a href="{{ route('quesioner.create') }}" style="background: #2980b9; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px;">+ Isi Kuesioner Baru</a>
+</div>
+
 <table class="table-data">
 
     <thead>

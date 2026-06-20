@@ -17,7 +17,12 @@ use App\Http\Controllers\Perpustakaan\KatalogSkripsiController;
 use App\Http\Controllers\perpustakaan\QuesionerController;
 Route::get('/buku', [KatalogBukuController::class, 'index']);
 Route::get('/skripsi', [KatalogSkripsiController::class, 'index']);
-Route::get('/quesioner', [QuesionerController::class, 'index']);
+Route::view('/status-anggota', 'Perpustakaan.status-anggota')->name('status.anggota');
+
+// Rute Fitur Kuesioner
+Route::get('/quesioner', [QuesionerController::class, 'index'])->name('quesioner.index');
+Route::get('/quesioner/create', [QuesionerController::class, 'create'])->name('quesioner.create');
+Route::post('/quesioner/store', [QuesionerController::class, 'store'])->name('quesioner.store');
 
 // Biodata
 use App\Http\Controllers\Biodata\lengkapDataController;

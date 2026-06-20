@@ -22,15 +22,34 @@ return new class extends Migration
             $table->string('frekuensi_akses_web');
             $table->text('alasan_akses_web');
 
-            $table->tinyInteger('petugas_memahami');
-            $table->tinyInteger('petugas_membimbing');
-            $table->tinyInteger('fasilitas_memadai');
-            $table->tinyInteger('koleksi_lengkap');
-            $table->tinyInteger('kenyamanan_ruangan');
+           // Kinerja Petugas (p1 - p8) beserta kolom alasannya
+            $table->integer('p1');
+            $table->integer('p2'); $table->string('alasan_p2')->nullable();
+            $table->integer('p3'); $table->string('alasan_p3')->nullable();
+            $table->integer('p4');
+            $table->integer('p5'); $table->string('alasan_p5')->nullable();
+            $table->integer('p6'); $table->string('alasan_p6')->nullable();
+            $table->integer('p7'); $table->string('alasan_p7')->nullable();
+            $table->integer('p8'); $table->string('alasan_p8')->nullable();
+
+        // Kualitas Informasi (i1 - i8) beserta kolom alasannya
+            $table->integer('i1'); $table->string('alasan_i1')->nullable();
+            $table->integer('i2'); $table->string('alasan_i2')->nullable();
+            $table->integer('i3');
+            $table->integer('i4'); $table->string('alasan_i4')->nullable();
+            $table->integer('i5'); $table->string('alasan_i5')->nullable();
+            $table->integer('i6');
+            $table->integer('i7');
+            $table->integer('i8'); $table->string('alasan_i8')->nullable();
+
+        for ($r = 1; $r <= 7; $r++) {
+            $table->integer('r' . $r);
+        }
 
             $table->text('saran')->nullable();
 
             $table->timestamps();
+
         });
     }
 

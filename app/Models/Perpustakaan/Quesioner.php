@@ -1,35 +1,25 @@
 <?php
 
-namespace App\Models\perpustakaan;
+namespace App\Models\perpustakaan; // Sesuaikan dengan namespace asli kamu
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Quesioner extends Model
 {
-    protected $table = 'quesioners';
+    use HasFactory;
 
-    protected $fillable = [
+    // 1. Tentukan nama tabel jika nama tabelmu tidak standar jamak (plural)
+    protected $table = 'quesioners'; 
 
-        'user_id',
+    // 2. GANTI ATAU TAMBAHKAN INI:
+    // Kosongkan guarded artinya kamu mengizinkan SEMUA kolom (termasuk p1-p8, i1-i8, r1-r7) 
+    // untuk disimpan langsung melalui Quesioner::create()
+    protected $guarded = []; 
 
-        'frekuensi_kunjungan',
-        'alasan_kunjungan',
-
-        'frekuensi_akses_web',
-        'alasan_akses_web',
-
-        'petugas_memahami',
-        'petugas_membimbing',
-        'fasilitas_memadai',
-        'koleksi_lengkap',
-        'kenyamanan_ruangan',
-
-        'saran'
-    ];
-
+    // 3. Relasi ke user yang sudah kamu buat sebelumnya jangan sampai hilang
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(\App\Models\User::class, 'user_id'); 
     }
 }
