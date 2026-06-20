@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    $user = Auth::user() ?? \App\Models\User::first();
     return view('home');
 });
 
@@ -36,7 +37,7 @@ Route::get('/surat-permohonan', [SuratPermohonanController::class, 'index']);
 
 use App\Http\Controllers\SuratKeterangan\PengajuanController;
 
-Route::prefix('layanan-mahasiswa')->group(function () {
+    Route::prefix('layanan-mahasiswa')->group(function () {
     Route::get('/', [PengajuanController::class, 'index'])->name('layanan.index');
     Route::post('/store', [PengajuanController::class, 'store'])->name('layanan.store');
     Route::get('/{pengajuan}', [PengajuanController::class, 'show'])->name('layanan.show');

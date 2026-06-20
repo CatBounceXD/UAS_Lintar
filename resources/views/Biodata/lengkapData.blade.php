@@ -39,11 +39,11 @@
                 </tr>
                 <tr>
                     <td width="25%">NPM</td>
-                    <td><b>{{ $lengkapData->npm }}</b></td>
+                    <td><b>{{ $lengkapData->user->nim }}</b></td>
                 </tr>
                 <tr class="bg-grey">
                     <td>NAMA MAHASISWA</td>
-                    <td><b>{{ $lengkapData->nama_mahasiswa }}</b></td>
+                    <td><b>{{ $lengkapData->user->name }}</b></td>
                 </tr>
                 <tr>
                     <td>NO.REKENING</td>
@@ -71,7 +71,7 @@
                 </tr>
                 <tr>
                     <td>EMAIL</td>
-                    <td style="color: blue;"><b>{{ $lengkapData->email }}</b></td>
+                    <td style="color: blue;"><b>{{ $lengkapData->user->email }}</b></td>
                 </tr>
 
                 <tr style="background-color: #a95151;" class="section-header">
