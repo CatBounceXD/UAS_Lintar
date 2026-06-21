@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\SuratPermohonan;
+namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;

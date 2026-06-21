@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\perpustakaan;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Perpustakaan\KatalogBuku;
