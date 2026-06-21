@@ -13,12 +13,24 @@ class KatalogSkripsiController extends Controller
      */
     public function index(Request $request)
     {
+        // 1. Ambil data inputan dari form filter di blade view
         $search = $request->search;
+        $fakultas = $request->fakultas; // <-- TAMBAHKAN INI
 
-        $skripsi = KatalogSkripsi::when($search, function ($query) use ($search) {
-            $query->where('judul_skripsi', 'like', '%' . $search . '%');
-        })->paginate(10);
+        // 2. Jalankan query kondisional menggunakan ketika (when)
+        $skripsi = KatalogSkripsi::query()
+            // Jika dropdown fakultas dipilih, jalankan filter ini
+            ->when($fakultas, function ($query) use ($fakultas) {
+                return $query->where('fakultas', $fakultas);
+            })
+            // Jika box pencarian diisi, jalankan filter ini
+            ->when($search, function ($query) use ($search) {
+                return $query->where('judul_skripsi', 'like', '%' . $search . '%')
+                             ->orWhere('pengarang', 'like', '%' . $search . '%'); // Opsional: mencari berdasarkan pengarang juga
+            })
+            ->get(); // Tetap mempertahankan pagination 10 data kamu
 
+        // 3. Kirim data variabel $skripsi ke view
         return view('Perpustakaan.KatalogSkripsi', compact('skripsi'));
     }
          

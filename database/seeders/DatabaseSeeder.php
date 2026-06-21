@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             KalenderAkademikSeeder::class,
             PermohonanSeeder::class,
             KatalogBukuSeeder::class,
+            KatalogSkripsiSeeder::class
         ]);
         
     }
