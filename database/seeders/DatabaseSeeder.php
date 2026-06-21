@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
             BiodataMhsSeeder::class,
             DispensasiBppSeeder::class,
             DispensasiSksSeeder::class,
+            TagihanPembayaranSeeder::class,
+            SkemaPembayaranSeeder::class,
             QuesionerSeeder::class,
             PengumumanSeeder::class,
             BahanAjarSeeder::class,

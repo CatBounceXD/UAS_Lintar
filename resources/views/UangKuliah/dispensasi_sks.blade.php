@@ -66,7 +66,7 @@
         overflow: hidden;
         margin-top: 1rem;
     }
-    /* Zebra Striping murni via CSS */
+   
     .table-data tbody tr:nth-child(even) {
         background-color: #f8fafc;
     }
