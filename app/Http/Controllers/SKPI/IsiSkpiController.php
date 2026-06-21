@@ -11,7 +11,6 @@ class IsiSkpiController extends Controller
 
     public function index()
     {
-
         $listKegiatan = DB::table('isi_skpi')->get();
         
         $totalPoin = 0;
@@ -42,7 +41,6 @@ class IsiSkpiController extends Controller
         $fileName = time() . '_' . uniqid() . '.' . $request->file_bukti->extension();
         $request->file_bukti->move(public_path('uploads/skpi'), $fileName);
 
-
         DB::table('isi_skpi')->insert([
             'kategori'    => $request->kategori,
             'jenis'       => $request->jenis ?? 'Mandiri',
@@ -57,5 +55,21 @@ class IsiSkpiController extends Controller
         ]);
 
         return redirect('/isi-skpi')->with('success', 'Data SKPI berhasil ditambahkan!');
+    }
+
+
+    public function destroy(Request $request)
+    {
+
+        if (!$request->has('ids')) {
+            return redirect('/isi-skpi')->with('error', 'Pilih data yang ingin dihapus terlebih dahulu!');
+        }
+
+
+        $ids = $request->ids;
+
+        DB::table('isi_skpi')->whereIn('id', $ids)->delete();
+
+        return redirect('/isi-skpi')->with('success', 'Data SKPI berhasil dihapus!');
     }
 }

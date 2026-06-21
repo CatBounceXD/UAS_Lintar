@@ -1,136 +1,147 @@
-@extends('layouts.main')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKPI - PENALARAN DAN KEILMUAN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #f5f5f5; 
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        .lintar-header {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .table-lintar th { 
+            background-color: #3a9fb7 !important; 
+            color: black !important; 
+            font-weight: bold;
+            border: 1px solid #a5a5a5 !important;
+            vertical-align: middle;
+        }
+        .table-lintar td {
+            border: 1px solid #c0c0c0 !important;
+            background-color: #e6e6e6;
+        }
+        .table-lintar tr:hover td {
+            background-color: #dadada;
+        }
+        .bg-total-poin {
+            background-color: #3a9fb7 !important;
+            color: black !important;
+            font-weight: bold;
+        }
+        .btn-action {
+            background-color: #f0f0f0;
+            border: 1px solid #a5a5a5;
+            color: black;
+            padding: 2px 12px;
+            border-radius: 3px;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-action:hover {
+            background-color: #e0e0e0;
+            border-color: #8cc;
+            color: black;
+        }
+    </style>
+</head>
+<body>
 
-@section('page')
-<style>
-    .skpi-list-container {
-        font-family: Arial, sans-serif;
-        margin-top: 15px;
-    }
-    .btn-action-top {
-        background-color: #f0f0f0;
-        border: 1px solid #ababab;
-        padding: 4px 12px;
-        border-radius: 3px;
-        text-decoration: none;
-        color: black;
-        font-size: 13px;
-        display: inline-block;
-        margin-right: 5px;
-        margin-bottom: 15px;
-        cursor: pointer;
-    }
-    .info-text {
-        font-size: 13px;
-        color: #333;
-        margin-bottom: 10px;
-    }
-    .main-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 13px;
-    }
-    .main-table th {
-        background-color: #469cb4;
-        color: black;
-        border: 1px solid #aaa;
-        padding: 6px;
-        text-align: center;
-        font-weight: bold;
-    }
-    .main-table td {
-        border: 1px solid #aaa;
-        padding: 8px;
-        vertical-align: top;
-        background-color: #dbdbdb;
-    }
-    .text-center {
-        text-align: center;
-    }
-    .poin-box {
-        background-color: #469cb4;
-        color: black;
-        font-weight: bold;
-    }
-    .text-danger {
-        color: red;
-        font-weight: bold;
-    }
-</style>
+<div class="lintar-header shadow-sm">
+    SKPI - PENALARAN DAN KEILMUAN
+</div>
 
-<div class="skpi-list-container">
-    @if(session('success'))
-        <div style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 15px; border-radius: 4px;">
-            {{ session('success') }}
+<div class="container-fluid px-3 mt-3">
+    <form action="{{ url('/isi-skpi/hapus') }}" method="POST" id="formHapusSkpi">
+        @csrf
+        @method('DELETE')
+
+        <div class="mb-2 d-flex gap-1 align-items-center">
+            <a href="{{ url('/isi-skpi/tambah') }}" class="btn-action">Tambah Kegiatan</a>
+            <button type="submit" class="btn-action" onclick="return confirm('Apakah Anda yakin ingin menghapus data yang dipilih?')">Hapus</button>
         </div>
-    @endif
 
-    <a href="{{ url('/isi-skpi/tambah') }}" class="btn-action-top">Tambah Kegiatan</a>
-    <button class="btn-action-top">Hapus</button>
+        <p class="mb-3" style="font-size: 13.5px;">Syarat minimal SKPI salah satunya adalah memenuhi 3 Kategori/Jenis, mohon untuk diperhatikan.</p>
 
-    <div class="info-text">
-        Syarat minimal SKPI salah satunya adalah memenuhi 3 Kategori/Jenis, mohon untuk diperhatikan.
-    </div>
-
-    <table class="main-table">
-        <thead>
-            <tr>
-                <th style="width: 4%;">Pilih</th>
-                <th style="width: 3%;">No</th>
-                <th style="width: 45%;">Kegiatan</th>
-                <th style="width: 15%;">Jenis</th>
-                <th style="width: 10%;">Klasifikasi</th>
-                <th style="width: 8%;">Tgl Input</th>
-                <th style="width: 5%;">Bukti</th>
-                <th style="width: 5%;">Validasi</th>
-                <th style="width: 5%;">Point</th>
-            </tr>
-        </thead>
-        <tbody>
-            @forelse($listKegiatan as $index => $item)
+        <table class="table table-lintar align-middle mb-1">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 45px;">Pilih</th>
+                    <th class="text-center" style="width: 40px;">No</th>
+                    <th class="text-center" style="width: 45%;">Kegiatan</th>
+                    <th class="text-center">Jenis</th>
+                    <th class="text-center">Klasifikasi</th>
+                    <th class="text-center" style="width: 90px;">Tgl Input</th>
+                    <th class="text-center" style="width: 55px;">Bukti</th>
+                    <th class="text-center" style="width: 70px;">Validasi</th>
+                    <th class="text-center" style="width: 55px;">Point</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($listKegiatan as $index => $item)
                 <tr>
                     <td class="text-center">
-                        <input type="checkbox" name="id_kegiatan[]" value="{{ $item->id }}">
+                        <input type="checkbox" name="ids[]" value="{{ $item->id }}">
                     </td>
                     <td class="text-center">{{ $index + 1 }}</td>
                     <td>
-                        <strong>{{ $item->kegiatan }}</strong><br>
-                        <span style="font-style: italic; color: #555;">{{ $item->kegiatan }} (English Translation Place)</span>
+                        <div><strong>{{ $item->kegiatan }}</strong></div>
+                        <div class="text-muted" style="font-style: italic; font-size: 12px;">
+                            {{ $item->kegiatan }} (English Translation Place)
+                        </div>
                     </td>
                     <td>
-                        {{ $item->kategori }}<br>
-                        <span style="font-style: italic; color: #555;">{{ $item->jenis }}</span>
+                        <div>{{ $item->jenis }}</div>
+                        <div class="text-muted" style="font-style: italic; font-size: 12px;">Mandiri</div>
+                    </td>
+                    <td>
+                        <div>{{ $item->klasifikasi }}</div>
+                        <div class="text-muted" style="font-style: italic; font-size: 12px;">Participant</div>
                     </td>
                     <td class="text-center">
-                        {{ $item->klasifikasi }}<br>
-                        <span style="font-style: italic; color: #555;">Participant</span>
+                        {{ date('d M Y', strtotime($item->created_at)) }}
                     </td>
                     <td class="text-center">
-                       {{ date('d M Y', strtotime($item->created_at)) }}
+                        @if($item->file_bukti)
+                            <a href="{{ asset('uploads/skpi/' . $item->file_bukti) }}" target="_blank" title="Lihat Bukti">
+                                🔍
+                            </a>
+                        @else
+                            -
+                        @endif
                     </td>
                     <td class="text-center">
-                        <a href="{{ asset('uploads/skpi/' . $item->file_bukti) }}" target="_blank">
-                            🔍
-                        </a>
+                        <span class="text-danger fw-bold">Belum</span>
                     </td>
-                    <td class="text-center text-danger">Belum</td>
-                    <td class="text-center" style="color: red;">15</td>
+                    <td class="text-center text-danger fw-bold">15</td>
                 </tr>
-            @empty
+                @empty
                 <tr>
-                    <td colspan="9" class="text-center" style="background: white; padding: 20px; color: #666;">
-                        Belum ada data kegiatan SKPI. Silakan klik "Tambah Kegiatan".
-                    </td>
+                    <td colspan="9" class="text-center text-muted py-3 bg-white">Belum ada data kegiatan SKPI yang diinput.</td>
                 </tr>
-            @endforelse
-            
-            <tr>
-                <td colspan="8" style="text-align: right; font-weight: bold; background-color: #469cb4;">Point Terkumpul</td>
-                <td class="text-center poin-box">{{ $totalPoin }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div style="font-size: 12px; margin-top: 5px; font-style: italic;">
-        *Poin yang dijumlahkan adalah berdasarkan data yg sudah di validasi
-    </div>
+                @endforelse
+
+                <tr>
+                    <td colspan="8" class="text-end px-3" style="background-color: #3a9fb7; font-weight: bold; text-align: right;">Point Terkumpul</td>
+                    <td class="text-center fw-bold" style="background-color: #3a9fb7;">{{ $totalPoin }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <p class="text-muted" style="font-style: italic; font-size: 12px;">*Poin yang dijumlahkan adalah berdasarkan data yg sudah di validasi</p>
 </div>
-@endsection
+
+</body>
+</html>

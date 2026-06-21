@@ -4,20 +4,21 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    public function up(): void {
-        Schema::create('dispensasi_bpps', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete(); 
-            $table->text('alamat');
-            $table->string('no_telepon');
-            $table->string('tahun_akademik');
-            $table->text('info_pembayaran')->nullable(); 
-            $table->string('status_pengajuan')->default('BELUM ADA PENGAJUAN.');
-            $table->date('tanggal_pengajuan')->nullable();
-            $table->text('alasan_pengajuan')->nullable();
-            $table->timestamps(); 
-        });
-    }
+        public function up(): void
+        {
+    Schema::create('dispensasi_bpps', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+        
+        $table->string('tahun_akademik');
+        $table->text('info_pembayaran')->nullable();
+        $table->string('status_pengajuan');
+        $table->date('tanggal_pengajuan')->nullable();
+        $table->text('alasan_pengajuan')->nullable();
+        
+        $table->timestamps();
+    });
+}
     public function down(): void {
         Schema::dropIfExists('dispensasi_bpps');
     }

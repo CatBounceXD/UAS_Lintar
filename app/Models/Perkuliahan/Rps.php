@@ -12,6 +12,12 @@ class Rps extends Model
     protected $table = 'rps';
     
     protected $fillable = [
+        'user_id',
         'fakultas', 'jurusan', 'kode_matkul', 'nama_matkul', 'sks', 'file_rps'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

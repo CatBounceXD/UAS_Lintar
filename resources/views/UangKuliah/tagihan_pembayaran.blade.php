@@ -2,70 +2,135 @@
 
 @section('page')
 
-    <!-- Header Utama Sesuai Gambar image_890d19.jpg -->
-    <div style="background-color: #222; color: #fff; padding: 10px; font-weight: bold; font-size: 15px; margin-bottom: 15px;">
-        UANG KULIAH - INFORMASI
-    </div>
+<style>
+    .info-box {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+    }
 
-    <!-- Teks Aturan Informasi Virtual Account -->
+    .table-data {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .table-data th,
+    .table-data td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .table-header {
+        background-color: #d1d5db;
+        font-weight: bold;
+    }
+
+    .status-lunas {
+        color: green;
+        font-weight: bold;
+    }
+
+    .status-belum {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+<h3>UANG KULIAH - INFORMASI</h3>
+
+<div class="info-box">
     <strong>Informasi Untuk mahasiswa tentang VA :</strong>
-    <ol style="line-height: 1.5; margin-top: 5px; margin-bottom: 20px;">
+
+    <ol style="padding-left:20px;">
         <li>Untuk seluruh mahasiswa pembayaran melalui VA (Virtual Account)</li>
-        <li>Fakultas Ekonomi melalui <strong>BANK BCA</strong></li>
-        <li>Fakultas Teknik, Kedokteran, Psikologi, FSRD melalui <strong>BANK BNI</strong></li>
-        <li>Fakultas Hukum, Fakultas Ilmu Komunikasi (FIKOM), Fakultas Teknologi Informasi (FTI) melalui <strong>BANK MANDIRI</strong></li>
+        <li>Fakultas Ekonomi melalui BANK BCA</li>
+        <li>Fakultas Teknik, Kedokteran, Psikologi, FSRD melalui BANK BNI</li>
+        <li>Fakultas Hukum, Fakultas Ilmu Komunikasi (FIKOM), FTI melalui BANK MANDIRI</li>
         <li>Catat nomor VA Anda dengan benar sebelum melakukan pembayaran ke Bank.</li>
         <li>Pembayaran melewati tanggal batas bayar dikenakan denda (kecuali semester pendek).</li>
-        <li>Pembayaran yang sudah dilakukan dapat dilihat di lintar mahasiswa <strong>H+1</strong> setelah tanggal pembayaran.</li>
+        <li>Pembayaran yang sudah dilakukan dapat dilihat di lintar mahasiswa H+1 setelah tanggal pembayaran.</li>
         <li>Keterlambatan pembayaran registrasi mengakibatkan Anda tidak dapat melakukan pengisian KRRS ONLINE.</li>
-        <li><strong>Abaikan tanggal batas bayar apabila nomor VA belum ada atau jumlah tagihan 0 rupiah.</strong></li>
-        <li><strong>Khusus mahasiswa Sarjana mulai angkatan 2024 dan mulai pembayaran semester 2, pembayaran BPP dan SKS bisa menggunakan pembayaran full atau pembayaran cicilan (termin) 01 dan 02.</strong></li>
+        <li>Abaikan tanggal batas bayar apabila nomor VA belum ada atau jumlah tagihan 0 rupiah.</li>
+        <li>Khusus mahasiswa Sarjana mulai angkatan 2024 dan mulai pembayaran semester 2, pembayaran BPP dan SKS bisa menggunakan pembayaran full atau pembayaran cicilan (termin) 01 dan 02.</li>
         <li>Tagihan yang muncul di Bank ada 2 yaitu untuk pembayaran BPP/SKS Full Payment dan BPP/SKS Termin 01, silahkan lakukan pembayaran sesuai dengan metode yang diinginkan yaitu full payment atau cicilan (termin) sesuai dengan nomor VA yang dimasukkan ketika melakukan pembayaran.</li>
         <li>Apabila melakukan pembayaran Full Payment, maka tagihan cicilan (termin) akan dihapus. Sedangkan apabila melakukan pembayaran cicilan (termin) 01, maka tagihan full payment akan dihapus dan sesuai dengan jadwalnya akan dibuatkan tagihan cicilan (termin) 02.</li>
     </ol>
+</div>
 
-    <!-- Identitas Pemilik Akun -->
-    <p style="margin-bottom: 5px;">Data Uang Kuliah: <strong>SEKAR ARUMA PUTRI (535250167)</strong></p>
+<h5>
+    Data Uang Kuliah: {{ $mahasiswa->name }} - {{ $mahasiswa->nim }}
+</h5>
 
-    <!-- Loop untuk memisahkan tabel per semester -->
-    @foreach($groupedTagihan as $tahunAkademik => $daftarTagihan)
-        <p style="margin-top: 15px; margin-bottom: 5px; font-weight: bold;">Tahun Akademik: {{ $tahunAkademik }}</p>
-        
-        <table border="1" cellpadding="6" cellspacing="0" width="100%" style="border-color: #ccc; border-collapse: collapse; text-align: center;">
-            <thead>
-                <tr bgcolor="#ccc" style="font-weight: bold;">
-                    <td rowspan="2" width="4%">No</td>
-                    <td rowspan="2" width="12%">Jenis</td>
-                    <td rowspan="2" width="15%">No. Virtual Account</td>
-                    <td rowspan="2" width="12%">Tgl. Batas Bayar</td>
-                    <td rowspan="2" width="12%">Jumlah Tagihan</td>
-                    <td rowspan="2" width="18%">Rincian</td>
-                    <td colspan="3" width="22%">Pembayaran</td>
-                    <td rowspan="2" width="5%">STATUS</td>
-                </tr>
-                <tr bgcolor="#ccc" style="font-weight: bold;">
-                    <td>Bank</td>
-                    <td>Tanggal</td>
-                    <td>Nominal</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($daftarTagihan as $index => $tagihan)
-                <tr bgcolor="{{ $index % 2 == 0 ? '#cae4db' : '#ffffff' }}">
-                    <td>{{ $index + 1 }}</td>
-                    <td align="left">{{ $tagihan->jenis }}</td>
-                    <td>{{ $tagihan->no_va }}</td>
-                    <td>{{ $tagihan->tgl_batas_bayar }}</td>
-                    <td align="right">{{ $tagihan->jumlah_tagihan }}</td>
-                    <td align="left" style="white-space: pre-line;">{{ $tagihan->rincian }}</td>
-                    <td>{{ $tagihan->bayar_bank }}</td>
-                    <td>{{ $tagihan->bayar_tanggal }}</td>
-                    <td align="right">{{ $tagihan->bayar_nominal }}</td>
-                    <td style="font-weight: bold;">{{ $tagihan->status }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @endforeach
+<p>Tahun Akademik: 2027 GANJIL</p>
+
+<table class="table-data">
+    <tr class="table-header">
+        <th rowspan="2">No</th>
+        <th rowspan="2">Jenis</th>
+        <th rowspan="2">No. Virtual Account</th>
+        <th rowspan="2">Tgl. Batas Bayar</th>
+        <th rowspan="2">Jumlah Tagihan</th>
+        <th rowspan="2">Rincian</th>
+        <th colspan="3">Pembayaran</th>
+        <th rowspan="2">STATUS</th>
+    </tr>
+
+    <tr class="table-header">
+        <th>Bank</th>
+        <th>Tanggal</th>
+        <th>Nominal</th>
+    </tr>
+
+    @if($dataSkema)
+
+        <tr>
+            <td>1</td>
+
+            <td>
+                {{ $dataSkema->skema_dipilih }}
+            </td>
+
+            <td>
+                {{ $dataSkema->va_full ?? $dataSkema->va_termin1 }}
+            </td>
+
+            <td>
+                09 July 2027
+            </td>
+
+            <td>
+               Rp. 9,225,000
+            </td>
+
+            <td>
+                BPP:
+              Rp. 9,225,000
+            </td>
+
+            <td>-</td>
+            <td>-</td>
+            <td>0</td>
+
+            <td class="status-belum">
+                BELUM LUNAS
+            </td>
+        </tr>
+
+
+    @else
+
+        <tr>
+            <td colspan="10" style="padding:20px;text-align:center;">
+                Belum ada skema pembayaran yang dipilih.
+            </td>
+        </tr>
+
+    @endif
+
+</table>
 
 @endsection

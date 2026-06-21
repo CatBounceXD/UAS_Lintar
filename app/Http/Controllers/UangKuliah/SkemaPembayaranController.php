@@ -2,35 +2,23 @@
 
 namespace App\Http\Controllers\UangKuliah;
 
-use Illuminate\Http\Request;
-use App\Models\UangKuliah\SkemaPembayaran;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\UangKuliah\SkemaPembayaran;
+use Illuminate\Http\Request;
 
 class SkemaPembayaranController extends Controller
 {
     public function index()
     {
-        $dataSkema = SkemaPembayaran::all();
+        $mahasiswa = User::find(1);
+        $dataSkema = SkemaPembayaran::where('user_id', 1)->latest()->first();
+        return view('UangKuliah.skema_pembayaran', compact('mahasiswa', 'dataSkema'));
+    }
 
-        // Trik Darurat: Jika database kosong, isi otomatis dengan data Sekar sesuai image_8980df.jpg
-        if ($dataSkema->isEmpty()) {
-            $dataSkema = [
-                (object)[
-                    'nama' => 'SEKAR ARUMA PUTRI',
-                    'nim' => '535250167',
-                    'semester_tahun' => 'Semester Ganjil 2026/2027',
-                    'va_full' => '1888853525016710',
-                    'nominal_full' => 'Rp.9,000,000',
-                    'va_termin1' => '1888853525016711',
-                    'nominal_termin1' => 'Rp. 5,535,000',
-                    'va_termin2' => '1888853525016712',
-                    'nominal_termin2' => 'Rp. 3,690,000',
-                    'total_termin' => 'Rp. 9,225,000',
-                    'skema_dipilih' => 'FULL PAYMENT(PENUH)'
-                ]
-            ];
-        }
-
-        return view('UangKuliah.skema_pembayaran', compact('dataSkema'));
+    public function store(Request $request)
+    {
+        SkemaPembayaran::simpanPilihanSkema(1, $request->skema);
+        return redirect()->route('tagihan.pembayaran'); 
     }
 }
