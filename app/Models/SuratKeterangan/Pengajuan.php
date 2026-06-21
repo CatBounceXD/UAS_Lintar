@@ -9,18 +9,21 @@ class Pengajuan extends Model
 {
     use HasFactory;
 
-    protected $table = 'pengajuans';
-
     protected $fillable = [
-        'bahasa',
-        'jenis_surat',
+        'user_id',
         'nim',
         'nama',
         'sks',
         'ipk',
-        'fakultas',
-        'jurusan',
+        'bahasa',
+        'jenis_surat',
         'tanggal_surat',
-        'persetujuan'
+        'fakultas',
+        'jurusan'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
 }

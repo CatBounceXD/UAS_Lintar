@@ -5,6 +5,7 @@ namespace App\Http\Controllers\layanan_mahasiswa;
 use App\Http\Controllers\Controller;
 use App\Models\SuratKeterangan\Pengajuan;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PengajuanController extends Controller
 {

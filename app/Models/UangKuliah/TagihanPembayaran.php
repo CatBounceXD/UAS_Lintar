@@ -12,6 +12,7 @@ class TagihanPembayaran extends Model
     protected $table = 'tagihan_pembayarans';
 
     protected $fillable = [
+        'user_id',
         'tahun_akademik',
         'jenis',
         'no_va',
