@@ -12,7 +12,7 @@ class KehadiranController extends Controller
 {
     public function index()
     {
-        $user = Auth::user() ?? User::first();
+        $user = Auth::user();
         $tahunAkademik = 'Genap 2025';
 
         // Tarik data studi mahasiswa khusus semester Genap 2025

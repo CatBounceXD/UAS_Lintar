@@ -124,6 +124,27 @@
             color: #444444;
             line-height: 1.5;
         }
+        /* LOGOUT */
+        .logout-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .btn-logout {
+            color: #000000;
+            padding: 3px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+        .btn-logout:hover {
+            background-color: #8c0000;
+        }
     </style>
 
     <div class="home-container">
@@ -163,6 +184,19 @@
                     <p>Gunakan <strong>Username</strong> dan <strong>Password WIFI</strong> di atas untuk dapat menggunakan WIFI UNTAR</p>
                 </div>
 
+                <div class="logout-container">
+                    <span style="font-size: 14px; color: #555555; line-height: 1.4;">
+                        Demi keamanan data anda jangan lupa klik tombol
+                    </span>
+                    <form method="POST" action="{{ route('logout') }}" style="margin: 0;">
+                        @csrf
+                        <button type="submit" class="btn-logout">LOGOUT</button>
+                    </form>
+                    <span style="font-size: 14px; color: #555555; line-height: 1.4;">
+                        Jika anda meninggalkan ruang ini.
+                    </span>
+                    
+                </div>
             </div>
             
 

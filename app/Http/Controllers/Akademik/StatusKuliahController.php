@@ -12,7 +12,7 @@ class StatusKuliahController extends Controller
 {
     public function index()
     {
-        $userId = Auth::id() ?? User::first()->id;
+        $userId = Auth::id();
 
         // 1. Tarik SEMUA data studi mahasiswa, urutkan berdasarkan semester
         $studi = StudiMahasiswa::where('user_id', $userId)

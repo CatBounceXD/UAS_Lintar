@@ -207,6 +207,15 @@
                     </ul>
                 </details>
             </li>
+
+            <li style="margin-top: 5px; border-top: 1px solid #ccc; padding-top: 3px;">
+                <form method="POST" action="{{ route('logout') }}" id="logout-form-sidebar">
+                    @csrf
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-sidebar').submit();" style="color: #b30000; font-weight: bold; padding: 10px;">
+                        LOGOUT
+                    </a>
+                </form>
+            </li>
         </ul>
     </div>
 
