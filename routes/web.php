@@ -36,8 +36,6 @@ use App\Http\Controllers\perpustakaan\QuesionerController;
 Route::get('/buku', [KatalogBukuController::class, 'index']);
 Route::get('/skripsi', [KatalogSkripsiController::class, 'index']);
 Route::view('/status-anggota', 'Perpustakaan.status-anggota')->name('status.anggota');
-
-// Rute Fitur Kuesioner
 Route::get('/quesioner', [QuesionerController::class, 'index'])->name('quesioner.index');
 Route::get('/quesioner/create', [QuesionerController::class, 'create'])->name('quesioner.create');
 Route::post('/quesioner/store', [QuesionerController::class, 'store'])->name('quesioner.store');
@@ -72,7 +70,6 @@ Route::get('/uang-kuliah', [SkemaPembayaranController::class, 'index']);
 Route::get('/tagihan-pembayaran', [TagihanPembayaranController::class, 'index'])->name('tagihan.pembayaran');
 Route::get('/skema-pembayaran', [SkemaPembayaranController::class, 'index']);
 Route::post('/skema-pembayaran/pilih', [SkemaPembayaranController::class, 'store'])->name('skema.pilih');
-// Hapus 'middleware' => 'auth' dulu supaya tidak error
 Route::get('/skema-pembayaran', [SkemaPembayaranController::class, 'index']);
 Route::post('/skema-pembayaran/store', [SkemaPembayaranController::class, 'store'])->name('skema.store');
 

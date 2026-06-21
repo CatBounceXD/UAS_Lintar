@@ -171,6 +171,8 @@
                     <ul class="submenu">
                         <li><a href="/buku">🔗 Katalog Buku</a></li>
                         <li><a href="/skripsi">🔗 Katalog Skripsi</a></li>
+                        <li><a href="/quesioner">🔗 Kuisioner</a></li>
+                        <li><a href="/status-anggota">🔗 Status Anggota</a></li>
                     </ul>
                 </details>
             </li>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SuratPermohonan;
+namespace App\Http\Controllers\layanan_mahasiswa;
 
 use App\Http\Controllers\Controller; 
 use App\Models\SuratPermohonan\Permohonan;
