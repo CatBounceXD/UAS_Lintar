@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKPI - PENALARAN DAN KEILMUAN</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+@extends('layouts.main')
+
+@section('page') {{-- Menggunakan section 'page' agar sesuai dengan master template --}}
     <style>
         body { 
             background-color: #f5f5f5; 
@@ -55,8 +51,7 @@
             color: black;
         }
     </style>
-</head>
-<body>
+
 
 <div class="lintar-header shadow-sm">
     SKPI - PENALARAN DAN KEILMUAN
@@ -143,5 +138,4 @@
     <p class="text-muted" style="font-style: italic; font-size: 12px;">*Poin yang dijumlahkan adalah berdasarkan data yg sudah di validasi</p>
 </div>
 
-</body>
-</html>
+@endsection

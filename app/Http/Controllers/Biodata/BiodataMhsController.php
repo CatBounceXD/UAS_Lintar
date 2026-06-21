@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Biodata\BiodataMhs; 
 use Illuminate\Http\Request;
 
+
 class BiodataMhsController extends Controller
 {
     public function index()

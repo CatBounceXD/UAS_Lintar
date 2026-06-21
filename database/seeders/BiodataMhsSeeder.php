@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Biodata\biodata; 
 
@@ -23,12 +22,13 @@ class BiodataMhsSeeder extends Seeder
             
             // DATA SEKOLAH
             'asal_sekolah'         => 'SMAIT AL MAKA KOTA JAKARTA BARAT',
-            'no_ijazah'            => '131202507656926', 
+            'no_ijazah'            => '131202507656926',
             'tgl_ijazah'           => '05/05/2025',
+            
+            // DATA ORANG TUA
             'nama_orang_tua'       => 'LILIS SURYANI',
             'alamat_orang_tua'     => 'JL BERSAMA 3 NO 79, BELENDUNG, BENDA, KOTA TANGERANG, BANTEN 15123',
             'telepon_orang_tua'    => '-',
-            'is_aktif_2021'        => 1,
         ]);
 
         // Opsional: Anda bisa copy block biodata::create() di atas 
