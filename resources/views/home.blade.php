@@ -24,7 +24,7 @@
 
         /* --- 2. KOTAK PROFIL (FULL WIDTH) --- */
         .profile-box {
-            padding: 10px 0px;
+            padding: 2px 10px;
         }
 
         .student-name {
