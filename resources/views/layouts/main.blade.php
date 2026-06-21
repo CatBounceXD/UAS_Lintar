@@ -1,6 +1,4 @@
-
 <style>
-
     body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #e9ecef; }
 
     .header-container { margin-bottom: 20px; }
@@ -183,6 +181,8 @@
                     <ul class="submenu">
                         <li><a href="/biodata">🔗 Biodata</a></li>
                         <li><a href="/lengkapdata">🔗 Lengkapi Data</a></li>
+                        <li><a href="/updatenohp">🔗 Update No HP</a></li>
+                        <li><a href="/ubah-password">🔗 Ubah Password</a></li>
                     </ul>
                 </details>
             </li>
@@ -195,6 +195,16 @@
                         <li><a href="/dispensasi-sks">🔗 Dispensasi SKS</a></li>
                         <li><a href="/uang-kuliah">🔗 Uang Kuliah</a></li>
                         <li><a href="/tagihan-pembayaran">🔗 Tagihan Pembayaran</a></li>
+                    </ul>
+                </details>
+            </li>
+
+            <li>
+                <details class="menu-folder">
+                    <summary>📂 SKPI</summary>
+                    <ul class="submenu">
+                        <li><a href="/bukti-skpi">🔗 Bukti SKPI</a></li>
+                        <li><a href="/isi-skpi">🔗 Isi SKPI</a></li>
                     </ul>
                 </details>
             </li>
@@ -224,4 +234,3 @@
     </div>
 
 </div>
-
