@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Biodata;
 use App\Http\Controllers\Controller; 
 use App\Models\Biodata\BiodataMhs; 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Biodata\Biodata;
 use Illuminate\Support\Facades\Auth;
 
