@@ -78,59 +78,35 @@
         <th colspan="3">Pembayaran</th>
         <th rowspan="2">STATUS</th>
     </tr>
-
     <tr class="table-header">
         <th>Bank</th>
         <th>Tanggal</th>
         <th>Nominal</th>
     </tr>
 
-    @if($dataSkema)
-
+    @forelse($tagihan as $index => $t)
         <tr>
-            <td>1</td>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ $t->jenis }}</td>
+            <td>{{ $t->no_va }}</td>
+            <td>{{ \Carbon\Carbon::parse($t->tgl_batas_bayar)->format('d F Y') }}</td>
+            <td>Rp. {{ number_format($t->jumlah_tagihan, 0, ',', '.') }}</td>
+            <td>{{ $t->rincian }}</td>
+            
+            <td>{{ $t->bayar_bank ?? '-' }}</td>
+            <td>{{ $t->bayar_tanggal ? \Carbon\Carbon::parse($t->bayar_tanggal)->format('d F Y') : '-' }}</td>
+            <td>{{ $t->bayar_nominal ? 'Rp. '.number_format($t->bayar_nominal, 0, ',', '.') : '0' }}</td>
 
-            <td>
-                {{ $dataSkema->skema_dipilih }}
-            </td>
-
-            <td>
-                {{ $dataSkema->va_full ?? $dataSkema->va_termin1 }}
-            </td>
-
-            <td>
-                09 July 2027
-            </td>
-
-            <td>
-               Rp. 9,225,000
-            </td>
-
-            <td>
-                BPP:
-              Rp. 9,225,000
-            </td>
-
-            <td>-</td>
-            <td>-</td>
-            <td>0</td>
-
-            <td class="status-belum">
-                BELUM LUNAS
+            <td class="{{ $t->status == 'Lunas' ? 'status-lunas' : 'status-belum' }}">
+                {{ strtoupper($t->status) }}
             </td>
         </tr>
-
-
-    @else
-
+    @empty
         <tr>
             <td colspan="10" style="padding:20px;text-align:center;">
-                Belum ada skema pembayaran yang dipilih.
+                Belum ada tagihan untuk semester ini.
             </td>
         </tr>
-
-    @endif
-
+    @endforelse
 </table>
-
 @endsection

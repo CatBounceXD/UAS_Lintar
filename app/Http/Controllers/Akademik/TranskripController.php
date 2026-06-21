@@ -12,7 +12,7 @@ class TranskripController extends Controller
 {
     public function index()
     {
-        $user = Auth::user() ?? User::first();
+        $user = Auth::user();
 
         // Tarik SEMUA data tanpa filter semester
         $dataTranskrip = StudiMahasiswa::where('user_id', $user->id)->get();

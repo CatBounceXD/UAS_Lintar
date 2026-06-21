@@ -5,6 +5,7 @@ namespace App\Http\Controllers\MBKM;
 use Illuminate\Http\Request;
 use App\Models\MBKM\LaporanMbkm;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanMbkmController extends Controller
 {

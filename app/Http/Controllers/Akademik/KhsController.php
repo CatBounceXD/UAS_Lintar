@@ -12,7 +12,7 @@ class KhsController extends Controller
 {
     public function index()
     {
-        $user = Auth::user() ?? User::first();
+        $user = Auth::user();
         $tahunAkademik = 'Genap 2025';
 
         $dataKhs = StudiMahasiswa::where('user_id', $user->id)

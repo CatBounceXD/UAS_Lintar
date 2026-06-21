@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\perpustakaan; // Sesuaikan dengan namespace asli kamu
+namespace App\Models\Perpustakaan; // Sesuaikan dengan namespace asli kamu
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

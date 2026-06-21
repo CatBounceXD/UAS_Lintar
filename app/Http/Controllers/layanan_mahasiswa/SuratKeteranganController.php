@@ -4,16 +4,35 @@ namespace App\Http\Controllers\layanan_mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\SuratKeterangan\Pengajuan;
+use App\Models\Akademik\StudiMahasiswa; 
 
 class SuratKeteranganController extends Controller
 {
     public function index()
     {
-        $riwayatPengajuan = Pengajuan::orderBy('created_at', 'desc')->get();
-        $user = User::find(1); 
-        return view('layanan_mahasiswa.surat_keterangan', compact('riwayatPengajuan', 'user'));
+        $user = Auth::user();
+
+        $riwayatPengajuan = Pengajuan::where('user_id', $user->id)
+                                ->orderBy('created_at', 'desc')
+                                ->get();
+
+        $studi = StudiMahasiswa::where('user_id', $user->id)->get();
+        $totalSks = $studi->sum('sks');
+        $sksDiperoleh = $studi->whereNotNull('bobot')->sum('sks');
+        
+        $mutu = 0;
+        foreach($studi as $mk) {
+            if($mk->bobot !== null) {
+                $mutu += ($mk->sks * $mk->bobot);
+            }
+        }
+        
+        $ipk = $sksDiperoleh > 0 ? number_format($mutu / $sksDiperoleh, 2) : 0;
+
+        return view('layanan_mahasiswa.surat_keterangan', compact('riwayatPengajuan', 'user', 'totalSks', 'ipk'));
     }
 
     public function store(Request $request)
@@ -22,28 +41,37 @@ class SuratKeteranganController extends Controller
             'bahasa' => 'required',
             'jenis_surat' => 'required',
             'tanggal_surat' => 'required|date',
-            'fakultas' => 'required',
-            'jurusan' => 'required',
         ]);
 
-        // 🔥 INI DIA JALUR VVIP-NYA! 🔥
-        // Kalau browser masih ngirim teks typo "Mahasiwa", kita paksa ganti jadi "Mahasiswa" disini!
         if ($validated['jenis_surat'] == 'Mahasiwa Aktif') {
             $validated['jenis_surat'] = 'Mahasiswa Aktif';
         }
 
-        // Ambil data Siswa 1
-        $user = User::find(1);
+        $user = Auth::user();
 
-        // Suapin semua data
+        $studi = StudiMahasiswa::where('user_id', $user->id)->get();
+        $totalSks = $studi->sum('sks');
+        $sksDiperoleh = $studi->whereNotNull('bobot')->sum('sks');
+        $mutu = 0;
+        foreach($studi as $mk) {
+            if($mk->bobot !== null) {
+                $mutu += ($mk->sks * $mk->bobot);
+            }
+        }
+        $ipk = $sksDiperoleh > 0 ? number_format($mutu / $sksDiperoleh, 2) : 0;
+
         $validated['user_id'] = $user->id; 
-        $validated['nim'] = $user->nim;    
-        $validated['nama'] = $user->name;  
-        $validated['sks'] = $user->sks ?? 16;
-        $validated['ipk'] = $user->ipk ?? 3.43;
-        $validated['jurusan'] = 'S1 ' . $user->prodi; 
+        $validated['sks'] = $totalSks;
+        $validated['ipk'] = $ipk;
+        $validated['persetujuan'] = $request->has('persetujuan') ? 1 : 0;
+        $validated['fakultas'] = 'Teknologi Informasi'; 
 
-        // Simpan ke database
+        if ($user->prodi == 'Sistem Informasi') {
+            $validated['jurusan'] = 'S1 Sistem Informasi';
+        } else {
+            $validated['jurusan'] = 'S1 Teknik Informatika';
+        }
+
         Pengajuan::create($validated);
         
         return redirect()->back()->with('success', 'Surat keterangan berhasil diajukan.');
