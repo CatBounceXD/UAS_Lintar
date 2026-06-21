@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Biodata;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Biodata\lengkapData;
 use Illuminate\Support\Facades\Auth;
 
 class lengkapDataController extends Controller
 {
+
     public function index()
     {
         $userId = Auth::id();

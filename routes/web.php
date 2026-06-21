@@ -26,6 +26,12 @@ use App\Http\Controllers\Perpustakaan\QuesionerController;
 // Biodata
 use App\Http\Controllers\Biodata\lengkapDataController;
 use App\Http\Controllers\Biodata\BiodataMhsController;
+use App\Http\Controllers\Biodata\UpdateNoHpController;
+use App\Http\Controllers\Biodata\UbahPasswordController;
+
+//SKPI
+use App\Http\Controllers\SKPI\SkpiMhsController;
+use App\Http\Controllers\SKPI\IsiSkpiController;
 
 // Cuti Online
 use App\Http\Controllers\cuti_online\AjuanCutiController;
@@ -71,7 +77,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Biodata
     Route::get('/lengkapdata', [lengkapDataController::class, 'index']);
+    Route::get('/lengkapdata/dashboard', [lengkapDataController::class, 'proses']);
     Route::get('/biodata', [BiodataMhsController::class, 'index']);
+    Route::get('/updatenohp', [UpdateNoHpController::class, 'index']);
+    Route::get('/ubah-password', [UbahPasswordController::class, 'index']);
 
     // Cuti Online
     Route::get('/ajuan-cuti', [AjuanCutiController::class, 'index']); 
@@ -92,6 +101,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/skema-pembayaran', [SkemaPembayaranController::class, 'index']);
     Route::post('/skema-pembayaran/pilih', [SkemaPembayaranController::class, 'store'])->name('skema.pilih');
     Route::post('/skema-pembayaran/store', [SkemaPembayaranController::class, 'store'])->name('skema.store');
+  
+    // SKPI
+    Route::get('/bukti-skpi', [SkpiMhsController::class, 'index']);
+    Route::get('/isi-skpi', [IsiSkpiController::class, 'index']);
+    Route::get('/isi-skpi/tambah', [IsiSkpiController::class, 'create']);
+    Route::post('/isi-skpi/simpan', [IsiSkpiController::class, 'store']);
+    Route::delete('/isi-skpi/hapus', [IsiSkpiController::class, 'destroy']);
 
     // MBKM 
     Route::get('/mbkm', [LaporanMbkmController::class, 'index']); 

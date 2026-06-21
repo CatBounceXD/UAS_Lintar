@@ -12,6 +12,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             StudiMahasiswaSeeder::class,
             BiodataMhsSeeder::class,
+            UbahPasswordSeeder::class,
+            SkpiMhsSeeder::class,
             DispensasiBppSeeder::class,
             DispensasiSksSeeder::class,
             TagihanPembayaranSeeder::class,
@@ -23,6 +25,7 @@ class DatabaseSeeder extends Seeder
             KalenderAkademikSeeder::class,
             PermohonanSeeder::class,
             KatalogBukuSeeder::class,
+            KatalogSkripsiSeeder::class
         ]);
         
     }

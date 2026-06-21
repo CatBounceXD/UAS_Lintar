@@ -24,28 +24,32 @@
 
     <div class="header-title">PERPUSTAKAAN - KATALOG SKRIPSI</div>
 
-    <table class="filter-table">
-        <tr>
-            <td class="bg-gray">Fakultas</td>
-            <td>
-                <select class="form-input">
-                    <option>Teknik</option>
-                    <option>Ekonomi</option>
-                    <option>Hukum</option>
-                    <option>FISIP</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td class="bg-gray">Pencarian</td>
-            <td>
-                <form action="/katalog-skripsi" method="GET" style="margin: 0;">
-                    <input type="text" name="search" class="form-input" placeholder="Judul Skripsi" style="width: 250px;">
+    {{-- 1. MEMBUNGKUS SELURUH TABEL FILTER DENGAN SATU FORM GET --}}
+    <form action="{{ url()->current() }}" method="GET" style="margin: 0;">
+        <table class="filter-table">
+            <tr>
+                <td class="bg-gray">Fakultas</td>
+                <td>
+                    {{-- 2. MENAMBAHKAN name="fakultas" DAN JAVASCRIPT ONCHANGE AGAR OTOMATIS RELOAD SAAT DIPILIH --}}
+                    <select name="fakultas" class="form-input" onchange="this.form.submit()">
+                        <option value="">-- Semua Fakultas --</option>
+                        <option value="Teknik" {{ request('fakultas') == 'Teknik' ? 'selected' : '' }}>Teknik</option>
+                        <option value="Ekonomi" {{ request('fakultas') == 'Ekonomi' ? 'selected' : '' }}>Ekonomi</option>
+                        <option value="Hukum" {{ request('fakultas') == 'Hukum' ? 'selected' : '' }}>Hukum</option>
+                        <option value="FISIP" {{ request('fakultas') == 'FISIP' ? 'selected' : '' }}>FISIP</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="bg-gray">Pencarian</td>
+                <td>
+                    {{-- 3. MENAMBAHKAN value DARI REQUEST AGAR TEKS YANG DIKETIK TIDAK HILANG SAAT PAGE REFRESH --}}
+                    <input type="text" name="search" class="form-input" value="{{ request('search') }}" placeholder="Judul Skripsi" style="width: 250px;">
                     <button type="submit" class="btn-cari">Cari</button>
-                </form>
-            </td>
-        </tr>
-    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
 
     <h3 style="margin-top: 25px; color: #2c3e50;">Daftar Judul Skripsi / Tesis</h3>
 
@@ -64,6 +68,7 @@
             @forelse($skripsi as $item)
             <tr>
                 <td style="text-align: center;"><input type="checkbox"></td>
+                {{-- 4. PERBAIKAN PENOMORAN AGAR BERLANJUT SAAT PINDAH HALAMAN PAGINATION --}}
                 <td style="text-align: center;">{{ $loop->iteration }}</td>
                 <td>{{ $item->judul_skripsi }}</td>
                 <td>{{ $item->pengarang }}</td>
@@ -72,14 +77,10 @@
             </tr>
             @empty
             <tr>
-                <td colspan="6" style="text-align: center; color: #888; padding: 15px;">Belum ada data skripsi.</td>
+                <td colspan="6" style="text-align: center; color: #888; padding: 15px;">Belum ada data skripsi yang sesuai.</td>
             </tr>
             @endforelse
         </tbody>
     </table>
-
-    <div style="margin-top: 20px;">
-        {{ $skripsi->links() }}
-    </div>
 
 @endsection
