@@ -50,42 +50,35 @@
         margin-bottom: 0;
     }
 
-    .table-data {
+    .lintar-table-custom {
         width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        overflow: hidden;
+        max-width: 650px; 
+        border-collapse: collapse;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
         margin-bottom: 20px;
     }
-    /* Zebra Striping murni via CSS */
-    .table-data tbody tr:nth-child(even) {
-        background-color: #f8fafc;
+
+    .lintar-table-custom tr {
+        background-color: #79babc !important; 
     }
-    .table-data tbody tr:nth-child(odd) {
-        background-color: #ffffff;
-    }
-    .table-data td {
-        padding: 14px 18px;
-        border-bottom: 1px solid #e2e8f0;
-        color: #334155;
-        font-size: 0.95rem;
+
+    .lintar-table-custom td {
+        padding: 5px 8px;
+        color: #000000 !important;
         vertical-align: top;
-    }
-    .table-data tr:last-child td {
-        border-bottom: none;
-    }
-    .table-data td.label {
-        font-weight: 600;
-        color: #1e293b;
-        width: 25%;
-    }
-    .table-data td.separator {
-        width: 2%;
-        text-align: center;
-        color: #94a3b8;
+        border: 1px solid #ffffff; 
         font-weight: bold;
+    }
+
+    /* Kolom Label Sebelah Kiri */
+    .lintar-table-custom .field-label {
+        width: 30%;
+    }
+
+    /* Kolom Nilai Sebelah Kanan */
+    .lintar-table-custom .field-value {
+        width: 70%;
     }
 
     .alert-danger {
@@ -109,62 +102,52 @@
 
     <div class="info-box">
         <p><strong>PENGUMUMAN: Pengajuan Dispensasi hanya untuk Mahasiswa Angkatan 2023 kebawah, Untuk Mahasiswa Angkatan 2024 Keatas menggunakan mekanisme Cicilan.</strong></p>
-        <p>Informasi Pengajuan Dispensasi Penundaan Pembayaran BPP Tahun Akademik : Genap 2025/2026<br>
-        Dibuka mulai tanggal 2 Desember 2025 sd. 8 Januari 2026 Pukul 23.00 WIB.</p>
+        <p>Informasi Pengajuan Dispensasi Penundaan Pembayaran BPP Tahun Akademik : Genap 2026/2027<br>
+        Dibuka mulai tanggal 2 Desember 2026 sd. 8 Januari 2027 Pukul 23.00 WIB.</p>
     </div>
 
     @if($dataDispensasi)
-        <table class="table-data">
+        <table class="lintar-table-custom">
             <tbody>
                 <tr>
-                    <td class="label">Nama</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataDispensasi->user->name }}</td>
+                    <td class="field-label">Nama</td>
+                    <td class="field-value">: {{ $dataDispensasi->user->name }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Nomor Pokok Mahasiswa</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataDispensasi->user->nim }}</td>
+                    <td class="field-label">Nomor Pokok Mahasiswa</td>
+                    <td class="field-value">: {{ $dataDispensasi->user->nim }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Fakultas/Program Studi</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataDispensasi->user->prodi }}</td>
+                    <td class="field-label">Fakultas/Program Studi</td>
+                    <td class="field-value">: {{ $dataDispensasi->user->prodi }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Alamat</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataDispensasi->user->biodata->alamat }}</td>
+                    <td class="field-label">Alamat</td>
+                    <td class="field-value">: {{ $dataDispensasi->user->biodata->alamat }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Nomor Telepon</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataDispensasi->user->biodata->handphone }}</td>
+                    <td class="field-label">Nomor Telepon</td>
+                    <td class="field-value">: {{ $dataDispensasi->user->biodata->handphone }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Tahun Akademik</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataDispensasi->tahun_akademik }}</td>
+                    <td class="field-label">Tahun Akademik</td>
+                    <td class="field-value">: {{ $dataDispensasi->tahun_akademik }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Informasi Pembayaran</td>
-                    <td class="separator">:</td>
-                    <td>{!! nl2br(e($dataDispensasi->info_pembayaran ?? '-')) !!}</td>
+                    <td class="field-label">Informasi Pembayaran</td>
+                    <td class="field-value">: {!! nl2br(e($dataDispensasi->info_pembayaran ?? '-')) !!}</td>
                 </tr>
                 <tr>
-                    <td class="label">Status Pengajuan</td>
-                    <td class="separator">:</td>
-                    <td><strong>{{ $dataDispensasi->status_pengajuan }}</strong></td>
+                    <td class="field-label">Status Pengajuan</td>
+                    <td class="field-value">: <strong>{{ $dataDispensasi->status_pengajuan }}</strong></td>
                 </tr>
                 <tr>
-                    <td class="label">Tanggal Pengajuan</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataDispensasi->tanggal_pengajuan ?? '-' }}</td>
+                    <td class="field-label">Tanggal Pengajuan</td>
+                    <td class="field-value">: {{ $dataDispensasi->tanggal_pengajuan ?? '-' }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Alasan Pengajuan</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataDispensasi->alasan_pengajuan ?? '-' }}</td>
+                    <td class="field-label">Alasan Pengajuan</td>
+                    <td class="field-value">: {{ $dataDispensasi->alasan_pengajuan ?? '-' }}</td>
                 </tr>
             </tbody>
         </table>
