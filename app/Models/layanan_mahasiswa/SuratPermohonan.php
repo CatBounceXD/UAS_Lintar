@@ -10,11 +10,7 @@ class SuratPermohonan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'no', 
-        'tanggal', 
-        'no_surat', 
-        'jenis_permohonan', 
-        'bahasa', 
-        'view_pdf'
+        'user_id', 'no', 'tanggal', 'no_surat', 'jenis_permohonan', 'bahasa', 
+        'nama_perusahaan', 'alamat_perusahaan', 'nim_tambahan', 'tgl_awal', 'tgl_akhir', 'view_pdf'
     ];
 }
