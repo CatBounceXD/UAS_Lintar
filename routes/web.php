@@ -88,6 +88,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Layanan Mahasiswa
     Route::get('/surat-keterangan', [SuratKeteranganController::class, 'index']);
     Route::get('/surat-permohonan', [SuratPermohonanController::class, 'index']);
+    Route::post('/surat-permohonan/store', [SuratPermohonanController::class, 'store']);
     Route::prefix('layanan-mahasiswa')->group(function () {
         Route::post('/store', [SuratKeteranganController::class, 'store'])->name('layanan.store');
     });

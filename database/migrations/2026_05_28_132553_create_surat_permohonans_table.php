@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('surat_permohonans', function (Blueprint $table) {
             $table->id();
-            // INI PENGHUBUNG KE TABEL USERS (Mahasiswa)
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             
             $table->string('no')->nullable();
@@ -18,6 +17,13 @@ return new class extends Migration
             $table->string('no_surat')->nullable();
             $table->string('jenis_permohonan');
             $table->string('bahasa');
+            
+            $table->string('nama_perusahaan')->nullable();
+            $table->text('alamat_perusahaan')->nullable();
+            $table->string('nim_tambahan')->nullable();
+            $table->date('tgl_awal')->nullable();
+            $table->date('tgl_akhir')->nullable();
+            
             $table->string('view_pdf')->nullable();
             $table->timestamps();
         });
