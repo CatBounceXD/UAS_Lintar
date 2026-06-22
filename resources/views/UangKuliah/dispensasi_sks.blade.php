@@ -57,42 +57,36 @@
         margin-bottom: 0;
     }
 
-    .table-data {
+
+    .lintar-table-custom {
         width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        overflow: hidden;
+        max-width: 650px; 
+        border-collapse: collapse;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
         margin-top: 1rem;
+        margin-bottom: 20px;
     }
-   
-    .table-data tbody tr:nth-child(even) {
-        background-color: #f8fafc;
+
+    .lintar-table-custom tr {
+        background-color: #79babc !important; 
     }
-    .table-data tbody tr:nth-child(odd) {
-        background-color: #ffffff;
-    }
-    .table-data td {
-        padding: 14px 18px;
-        border-bottom: 1px solid #e2e8f0;
-        color: #334155;
-        font-size: 0.95rem;
+
+    .lintar-table-custom td {
+        padding: 5px 8px;
+        color: #000000 !important; 
         vertical-align: top;
-    }
-    .table-data tr:last-child td {
-        border-bottom: none;
-    }
-    .table-data td.label {
-        font-weight: 600;
-        color: #1e293b;
-        width: 25%;
-    }
-    .table-data td.separator {
-        width: 2%;
-        text-align: center;
-        color: #94a3b8;
+        border: 1px solid #ffffff; 
         font-weight: bold;
+    }
+
+
+    .lintar-table-custom .field-label {
+        width: 30%;
+    }
+
+    .lintar-table-custom .field-value {
+        width: 70%;
     }
 
     .alert-danger {
@@ -115,65 +109,56 @@
     <div class="divider"></div>
 
     <div class="info-box">
-        <p><strong>Informasi Pengajuan Dispensasi Penundaan Pembayaran SKS Tahun Akademik : Genap 2025/2026</strong></p>
+        <p><strong>Informasi Pengajuan Dispensasi Penundaan Pembayaran SKS Tahun Akademik : Genap 2026/2027</strong></p>
         <ul>
-            <li>Dibuka mulai tanggal 3 Maret 2026 sd. 2 April 2026 Pukul 16.00 WIB.</li>
+            <li>Dibuka mulai tanggal 3 Maret 2026 sd. 2 April 2027 Pukul 16.00 WIB.</li>
             <li>Untuk mahasiswa angkatan >= 2024 tidak dapat mengajukan Dispensasi sks ini karena sudah memakai skema Termin.</li>
         </ul>
     </div>
 
     @if($dataSks)
-        <table class="table-data">
+        <table class="lintar-table-custom">
             <tbody>
                 <tr>
-                    <td class="label">Nama</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataSks->user->name }}</td>
+                    <td class="field-label">Nama</td>
+                    <td class="field-value">: {{ $dataSks->user->name }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Nomor Pokok Mahasiswa</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataSks->user->nim }}</td>
+                    <td class="field-label">Nomor Pokok Mahasiswa</td>
+                    <td class="field-value">: {{ $dataSks->user->nim }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Fakultas/Program Studi</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataSks->user->prodi }}</td>
+                    <td class="field-label">Fakultas/Program Studi</td>
+                    <td class="field-value">: {{ $dataSks->user->prodi }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Alamat</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataSks->user->biodata->alamat }}</td>
+                    <td class="field-label">Alamat</td>
+                    <td class="field-value">: {{ $dataSks->user->biodata->alamat }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Nomor Telepon</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataSks->user->biodata->handphone }}</td>
+                    <td class="field-label">Nomor Telepon</td>
+                    <td class="field-value">: {{ $dataSks->user->biodata->handphone }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Tahun Akademik</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataSks->tahun_akademik }}</td>
+                    <td class="field-label">Tahun Akademik</td>
+                    <td class="field-value">: {{ $dataSks->tahun_akademik }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Status Pengajuan</td>
-                    <td class="separator">:</td>
-                    <td><strong>{{ $dataSks->status_pengajuan }}</strong></td>
+                    <td class="field-label">Status Pengajuan</td>
+                    <td class="field-value">: <strong>{{ $dataSks->status_pengajuan }}</strong></td>
                 </tr>
                 <tr>
-                    <td class="label">Tanggal Pengajuan</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataSks->tanggal_pengajuan ?? '-' }}</td>
+                    <td class="field-label">Tanggal Pengajuan</td>
+                    <td class="field-value">: {{ $dataSks->tanggal_pengajuan ?? '-' }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Alasan Pengajuan</td>
-                    <td class="separator">:</td>
-                    <td>{{ $dataSks->alasan_pengajuan ?? '-' }}</td>
+                    <td class="field-label">Alasan Pengajuan</td>
+                    <td class="field-value">: {{ $dataSks->alasan_pengajuan ?? '-' }}</td>
                 </tr>
             </tbody>
         </table>
     @else
-        <div class="alert-danger">Belum ada data pengajuan dispensasi BPP di database.</div>
+        <div class="alert-danger">Belum ada data pengajuan dispensasi SKS di database.</div>
     @endif
 
 @endsection
