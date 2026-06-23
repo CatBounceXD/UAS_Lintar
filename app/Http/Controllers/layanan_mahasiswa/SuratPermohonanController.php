@@ -5,7 +5,8 @@ namespace App\Http\Controllers\layanan_mahasiswa;
 use Illuminate\Http\Request;
 use App\Models\layanan_mahasiswa\SuratPermohonan;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\DB;   
 
 class SuratPermohonanController extends Controller
 {
