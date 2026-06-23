@@ -71,12 +71,10 @@
         font-weight: bold;
     }
 
-    /* Kolom Label Sebelah Kiri */
     .lintar-table-custom .field-label {
         width: 30%;
     }
 
-    /* Kolom Nilai Sebelah Kanan */
     .lintar-table-custom .field-value {
         width: 70%;
     }
