@@ -55,6 +55,8 @@ class QuesionerController extends Controller
             'r5' => 'required|integer', 'alasan_r5' => 'nullable|string|max:255',
             'r6' => 'required|integer', 'alasan_r6' => 'nullable|string|max:255',
             'r7' => 'required|integer', 'alasan_r7' => 'nullable|string|max:255',
+
+            'saran' => 'nullable|string',
         ]);
         
         $validated['user_id'] = Auth::id();
