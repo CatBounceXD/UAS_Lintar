@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page') {{-- <-- GANTI DARI 'isi_halaman' MENJADI 'page' AGAR KONTENNYA MUNCUL --}}
+@section('page')
 <style>
     .skpi-container {
         font-family: 'Segoe UI', Arial, sans-serif;

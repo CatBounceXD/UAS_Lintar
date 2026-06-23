@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page') {{-- <--- Diganti menjadi 'page' agar kontennya mau muncul --}}
+@section('page')
 <style>
     .pwd-card {
         font-family: 'Segoe UI', Arial, sans-serif;

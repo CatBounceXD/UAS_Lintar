@@ -10,10 +10,8 @@ class DispensasiBpp extends Model
 {
     use HasFactory;
 
-    // Menegaskan nama tabel di database
     protected $table = 'dispensasi_bpps';
 
-    // Mendaftarkan kolom-kolom yang diizinkan untuk diisi data
     protected $fillable = [
         'name',
         'nim',

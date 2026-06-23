@@ -19,8 +19,8 @@
         .transkrip-table th { background-color: #b5b5b5; color: #000; font-weight: bold; text-align: center; padding: 8px; border: 1px solid #ffffff; }
         .transkrip-table td { padding: 6px 8px; border: 1px solid #ffffff; color: #000; }
         
-        .row-transkrip { background-color: #eebec1; } /* Warna merah muda pucat khas transkrip Anda */
-        .row-transkrip:nth-child(even) { background-color: #e5aeb1; } /* Sedikit lebih gelap untuk selang-seling */
+        .row-transkrip { background-color: #eebec1; }
+        .row-transkrip:nth-child(even) { background-color: #e5aeb1; }
 
         .transkrip-footer { margin-top: 20px; text-align: center; font-size: 13px; line-height: 1.8; }
     </style>

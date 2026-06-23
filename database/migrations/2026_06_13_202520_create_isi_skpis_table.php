@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('isi_skpi', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori');    // Kolom kategori (Menjawab error di screenshot)
+            $table->string('kategori');
             $table->string('jenis')->default('Mandiri');
             $table->string('kegiatan');
             $table->string('tingkat');

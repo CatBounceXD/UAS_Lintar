@@ -2,7 +2,7 @@
 namespace App\Models\Biodata;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User; // Wajib import
+use App\Models\User;
 
 class biodata extends Model
 {

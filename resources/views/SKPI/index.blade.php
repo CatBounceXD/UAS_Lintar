@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page') {{-- Menggunakan section 'page' agar sesuai dengan master template --}}
+@section('page')
     <style>
         body { 
             background-color: #f5f5f5; 

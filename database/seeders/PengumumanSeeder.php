@@ -23,7 +23,6 @@ class PengumumanSeeder extends Seeder
             'isi'  => 'Jadwal herregistrasi dan pembayaran BPP cicilan termin kedua paling lambat tanggal 15 Juli 2026.'
         ]);
 
-        // 2. Data Dummy Informasi
         Pengumuman::create([
             'tipe' => 'informasi',
             'isi'  => 'Pelatihan soft skills mahasiswa tingkat akhir akan dilaksanakan secara hybrid mulai minggu depan.'

@@ -3,15 +3,12 @@
 @section('page')
     
 <style>
-    /* 1. Desain Kotak Judul */
     .header-title { background-color: #333; color: white; padding: 10px; font-weight: bold; margin-bottom: 15px; }
     
-    /* 3. Desain Tabel Utama */
     .table-data { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 15px; }
     .table-data th, .table-data td { border: 1px solid #ccc; padding: 8px; text-align: left; }
     .table-data th { background-color: #f4f4f4; }
     
-    /* 4. Desain Teks Tambahan */
     .text-center { text-align: center; }
     .text-red { color: red; }
 </style>

@@ -32,7 +32,6 @@
         letter-spacing: 0.5px;
     }
     
-    /* Navigasi Tab Atas */
     .tabs-container {
         display: flex;
         background: #f8fafc;
@@ -60,7 +59,6 @@
         background-color: #f1f5f9;
     }
     
-    /* Box Putih Utama */
     .inner-box {
         background: white;
         border: 1px solid #cbd5e1;
@@ -68,7 +66,6 @@
         padding: 20px;
     }
     
-    /* Tab Samping Mandiri */
     .sub-tabs {
         display: flex;
         gap: 5px;
@@ -89,7 +86,6 @@
         margin-bottom: -1px;
     }
 
-    /* Struktur Tabel Form LINTAR */
     .form-table {
         width: 100%;
         border-collapse: collapse;
@@ -167,10 +163,8 @@
     @endif
 
     <div class="main-card">
-        <!-- Judul Header Otomatis Berubah Lewat JS -->
         <div class="card-header-title" id="main-header-title">SKPI - PENALARAN DAN KEILMUAN</div>
         
-        <!-- Navigasi Kategori SKPI Atas -->
         <div class="tabs-container">
             <div class="tab-item active" onclick="switchCategory('penalaran', this)">Penalaran dan Keilmuan</div>
             <div class="tab-item" onclick="switchCategory('bakat', this)">Bakat dan Minat</div>
@@ -181,18 +175,15 @@
         </div>
 
         <div class="form-body">
-            <!-- Sub Tab Samping (Hanya Mengaktifkan Mandiri) -->
             <div class="sub-tabs">
                 <div class="sub-tab-item active">Mandiri</div>
                 <div class="sub-tab-item" style="color: #999; cursor: not-allowed;">Dirjen Pembelajaran dan Kemahasiswaan</div>
             </div>
 
             <div class="inner-box">
-                <!-- Action disatukan ke rute penyimpanan isi-skpi -->
                 <form action="{{ url('/isi-skpi/simpan') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
-                    <!-- Input Hidden untuk mengirim data Kategori Aktif ke Backend -->
                     <input type="hidden" name="kategori" id="hidden-kategori" value="Penalaran dan Keilmuan">
                     <input type="hidden" name="jenis" value="Mandiri">
 
@@ -206,12 +197,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <!-- Kolom Dropdown Form -->
                                 <td>
                                     <ul class="form-label-list">
                                         <li>Kegiatan</li>
                                     </ul>
-                                    <!-- Dropdown Utama yang isinya berganti secara otomatis -->
                                     <select name="kegiatan" id="dropdown-kegiatan" class="form-control">
                                         <option value="Olimpiade / Debat / Karya Tulis / Lomba Sejenisnya">Olimpiade / Debat / Karya Tulis / Lomba Sejenisnya</option>
                                     </select>
@@ -237,7 +226,6 @@
                                     </select>
                                 </td>
 
-                                <!-- Kolom Periode -->
                                 <td>
                                     <span class="period-label">Mulai</span>
                                     <input type="date" name="tgl_mulai" class="form-control" style="text-align: center;" required>
@@ -247,7 +235,6 @@
                                     <input type="date" name="tgl_selesai" class="form-control" style="text-align: center;" required>
                                 </td>
 
-                                <!-- Kolom Bukti File -->
                                 <td>
                                     <div class="file-instruction">
                                         Sertakan bukti atau file pendukung dengan format jpg/png/pdf dan tidak lebih dari 10 MB
@@ -265,9 +252,7 @@
     </div>
 </div>
 
-<!-- JavaScript Engine untuk Mengubah Isi Dropdown Kegiatan Secara Real-Time -->
 <script>
-    // Pemetaan data kegiatan sesuai request kamu
     const masterKegiatan = {
         penalaran: [
             "Olimpiade / Debat / Karya Tulis / Lomba Sejenisnya"
@@ -292,20 +277,16 @@
     };
 
     function switchCategory(categoryKey, element) {
-        // 1. Pindahkan kelas active pada Tab atas
         document.querySelectorAll('.tab-item').forEach(tab => tab.classList.remove('active'));
         element.classList.add('active');
 
-        // 2. Ubah teks Header Card Title sesuai tab yang diklik
         const namaKategori = element.innerText;
         document.getElementById('main-header-title').innerText = "SKPI - " + namaKategori.toUpperCase();
 
-        // 3. Set value input hidden kategori agar data di database tidak tertukar
         document.getElementById('hidden-kategori').value = namaKategori;
 
-        // 4. Bersihkan dan isi ulang Dropdown Kegiatan dengan data baru
         const dropdown = document.getElementById('dropdown-kegiatan');
-        dropdown.innerHTML = ""; // Kosongkan opsi lama
+        dropdown.innerHTML = "";
 
         masterKegiatan[categoryKey].forEach(item => {
             const option = document.createElement('option');

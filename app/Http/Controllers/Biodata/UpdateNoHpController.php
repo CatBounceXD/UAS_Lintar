@@ -10,7 +10,7 @@ class UpdateNoHpController extends Controller
 {
     public function index()
     {
-        $mahasiswa = BiodataMhs::first();
+        $mahasiswa = BiodataMhs::where('user_id', Auth::id())->first();
 
         return view('Biodata.updateNoHp', compact('mahasiswa'));
     }

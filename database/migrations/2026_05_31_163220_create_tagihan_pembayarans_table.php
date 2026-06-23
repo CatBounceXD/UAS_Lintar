@@ -7,10 +7,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        // DI SINI BARU BENAR tagihan_pembayarans
         Schema::create('tagihan_pembayarans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete(); // Pengikat relasi
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('tahun_akademik');
             $table->string('jenis');
             $table->string('no_va');

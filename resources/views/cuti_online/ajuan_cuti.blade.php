@@ -54,7 +54,6 @@
         border-bottom: 1px solid #e2e8f0;
     }
     
-    /* Zebra Striping murni via CSS */
     .table-data tbody tr:nth-child(even) {
         background-color: #f8fafc;
     }

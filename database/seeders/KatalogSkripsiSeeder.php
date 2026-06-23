@@ -16,7 +16,7 @@ class KatalogSkripsiSeeder extends Seeder
             [
                 'judul_skripsi' => 'PENERAPAN PRINSIP SUBSTANSI MENGUNGGULI BENTUK (SUBSTANCE OVER FORM) DALAM PENYELESAIAN SENGKETA PAJAK : STUDI KASUS PUTUSAN PENGADILAN PAJAK DI INDONESIA',
                 'pengarang' => 'Flindraning',
-                'fakultas' => 'Ekonomi', // Pastikan teks ini sama dengan value di select option Blade kamu
+                'fakultas' => 'Ekonomi',
                 'tahun' => '2024',
             ],
             [
@@ -43,7 +43,6 @@ class KatalogSkripsiSeeder extends Seeder
                 'fakultas' => 'Ekonomi',
                 'tahun' => '2023',
             ],
-            // Kamu juga bisa menambahkan contoh untuk Fakultas Teknik agar bisa ditest filternya
             [
                 'judul_skripsi' => 'Rancang Bangun Sistem Informasi Perpustakaan Berbasis Web Framework Laravel',
                 'pengarang' => 'Jordan Christian',

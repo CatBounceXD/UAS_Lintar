@@ -10,10 +10,8 @@ class DispensasiSks extends Model
 {
     use HasFactory;
 
-    // Menentukan nama tabel di database
     protected $table = 'dispensasi_skss';
 
-    // Mendaftarkan 9 kolom sesuai request kamu
     protected $fillable = [
         'name',
         'nim',

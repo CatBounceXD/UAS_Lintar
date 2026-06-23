@@ -14,12 +14,10 @@ class StatusKuliahController extends Controller
     {
         $userId = Auth::id();
 
-        // 1. Tarik SEMUA data studi mahasiswa, urutkan berdasarkan semester
         $studi = StudiMahasiswa::where('user_id', $userId)
                     ->orderBy('tahun_akademik', 'asc')
                     ->get();
 
-        // 2. Kelompokkan data per semester (Misal: Semua matkul Genap 2025 jadi satu grup)
         $grouped = $studi->groupBy('tahun_akademik');
 
         $statusData = [];
@@ -27,11 +25,9 @@ class StatusKuliahController extends Controller
         $kumulatif_sks_peroleh = 0;
         $kumulatif_mutu = 0;
 
-        // 3. Lakukan perhitungan matematika untuk setiap semester
         foreach ($grouped as $semester => $matkuls) {
             
             $sks_ambil = $matkuls->sum('sks');
-            // SKS diperoleh hanya dihitung jika sudah ada nilainya (bobot tidak null)
             $sks_peroleh = $matkuls->whereNotNull('bobot')->sum('sks');
 
             $mutu_semester = 0;
@@ -44,18 +40,14 @@ class StatusKuliahController extends Controller
                 }
             }
 
-            // Hitung IPS (Indeks Prestasi Semester)
             $ips = $sks_dinilai > 0 ? ($mutu_semester / $sks_dinilai) : null;
 
-            // Tambahkan ke total kumulatif
             $kumulatif_sks_ambil += $sks_ambil;
             $kumulatif_sks_peroleh += $sks_peroleh;
             $kumulatif_mutu += $mutu_semester;
 
-            // Hitung IPK (Indeks Prestasi Kumulatif)
             $ipk = $kumulatif_sks_peroleh > 0 ? ($kumulatif_mutu / $kumulatif_sks_peroleh) : null;
 
-            // 4. Masukkan hasil kalkulasi ke dalam array untuk dikirim ke View
             $statusData[] = (object)[
                 'tahun_akademik' => $semester,
                 'status' => 'Aktif',

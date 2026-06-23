@@ -39,7 +39,7 @@
         }
 
         .kehadiran-table th {
-            background-color: #929a73; /* Warna header hijau zaitun */
+            background-color: #929a73;
             color: #000000;
             font-weight: bold;
             text-align: center;
@@ -60,9 +60,8 @@
             cursor: pointer;
         }
 
-        /* Mewarnai baris tabel selang-seling */
-        .row-ganjil { background-color: #c4d7c5; } /* Hijau pucat */
-        .row-genap { background-color: #9eb8a2; }  /* Hijau sedikit gelap */
+        .row-ganjil { background-color: #c4d7c5; }
+        .row-genap { background-color: #9eb8a2; }
     </style>
 
     <div class="page-title-banner">

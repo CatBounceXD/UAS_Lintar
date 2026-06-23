@@ -4,7 +4,7 @@
 
 <style>
     .status-header {
-        background-color: #2D2D2D; /* Warna abu-abu gelap sesuai template */
+        background-color: #2D2D2D;
         color: #FFFFFF;
         padding: 10px 15px;
         font-weight: bold;
@@ -31,7 +31,7 @@
 
     .status-divider {
         border: 0;
-        border-top: 1px solid #000000; /* Garis pembatas hitam tipis */
+        border-top: 1px solid #000000;
         margin: 10px 0;
     }
 </style>

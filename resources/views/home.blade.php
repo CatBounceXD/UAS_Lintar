@@ -2,17 +2,15 @@
 
 @section('page')
     <style>
-        /* --- BUNGKUS UTAMA --- */
         .home-container {
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Jarak antar baris ke bawah */
+            gap: 20px;
         }
 
-        /* --- 1. BANNER MERAH (MENU UTAMA) --- */
         .menu-banner {
-            background-color: #333; /* Warna merah khas seperti di main layout */
+            background-color: #333;
             color: #ffffff;
             padding: 12px 20px;
             border-radius: 10px 10px 0 0;
@@ -22,7 +20,6 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* --- 2. KOTAK PROFIL (FULL WIDTH) --- */
         .profile-box {
             padding: 2px 10px;
         }
@@ -40,21 +37,18 @@
             line-height: 1.6;
         }
 
-        /* --- 3. PEMBAGIAN BAWAH (KIRI & KANAN) --- */
         .bottom-split {
             display: grid;
-            grid-template-columns: 1.3fr 0.7fr; /* Membagi layar kiri dan kanan */
+            grid-template-columns: 1.3fr 0.7fr;
             gap: 20px;
         }
 
-        /* FORMAT BARU: Pembungkus kolom agar susunan kotak menumpuk rapat ke bawah */
         .left-sub-column, .right-sub-column {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Menentukan jarak rapat antar kotak internal */
+            gap: 15px; 
         }
 
-        /* Kotak Info PKKMB & Masa Studi (Kiri) */
         .info-card {
             background-color: #ffffff;
             border: 1px solid #cccccc;
@@ -94,7 +88,6 @@
             line-height: 1.5;
         }
 
-        /* Kotak Pengumuman & Informasi (Kanan) */
         .pengumuman-box {
             background-color: #ffffff;
             border: 1px solid #cccccc;
@@ -124,7 +117,6 @@
             color: #444444;
             line-height: 1.5;
         }
-        /* LOGOUT */
         .logout-container {
             display: flex;
             align-items: center;

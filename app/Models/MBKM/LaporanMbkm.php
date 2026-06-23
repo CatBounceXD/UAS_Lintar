@@ -9,7 +9,6 @@ class LaporanMbkm extends Model
 {
     use HasFactory;
 
-    // Mengizinkan kolom ini untuk diisi
     protected $fillable = [
         'nama', 
         'npm', 

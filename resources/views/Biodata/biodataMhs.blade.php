@@ -13,18 +13,14 @@
                 <tr style="background-color: teal; color: white; font-weight: bold;">
                     <td colspan="2">DATA MAHASISWA</td>
                 </tr>
-               <!-- UBAH BAGIAN NPM -->
                 <tr>
                     <td width="30%">NPM</td>
-                    <!-- Aslinya: $biodata->npm -->
-                    <td><b>{{ $biodata->user->nim }}</b></td> <!-- Di tabel users, kolomnya bernama 'nim' -->
+                    <td><b>{{ $biodata->user->nim }}</b></td>
                 </tr>
 
-                <!-- UBAH BAGIAN NAMA -->
                 <tr style="background-color: lightgrey;">
                     <td>NAMA MAHASISWA</td>
-                    <!-- Aslinya: $biodata->nama_mahasiswa -->
-                    <td><b>{{ $biodata->user->name }}</b></td> <!-- Di tabel users, kolomnya bernama 'name' -->
+                    <td><b>{{ $biodata->user->name }}</b></td>
                 </tr>
                 <tr>
                     <td>NO.REKENING</td>

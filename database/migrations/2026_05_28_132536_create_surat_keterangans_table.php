@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('surat_keterangans', function (Blueprint $table) {
             $table->id();
-            // INI PENGHUBUNG KE TABEL USERS (Mahasiswa)
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             
             $table->string('no')->nullable();

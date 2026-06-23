@@ -30,7 +30,7 @@
         }
 
         .histori-table th {
-            background-color: #929a73; /* Warna hijau zaitun khas tabel nilai */
+            background-color: #929a73;
             color: #000000;
             font-weight: bold;
             text-align: center;
@@ -44,9 +44,8 @@
             color: #000000;
         }
 
-        /* Mewarnai baris ganjil & genap agar mirip sistem lama */
-        .row-ganjil { background-color: #e6e8ba; } /* Kuning pucat */
-        .row-genap { background-color: #c7caff; }  /* Ungu kebiruan pucat */
+        .row-ganjil { background-color: #e6e8ba; }
+        .row-genap { background-color: #c7caff; }
     </style>
 
     <div class="page-title-banner">
