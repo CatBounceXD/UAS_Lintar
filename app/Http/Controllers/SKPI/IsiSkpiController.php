@@ -5,13 +5,15 @@ namespace App\Http\Controllers\SKPI;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\Auth;
+
 
 class IsiSkpiController extends Controller
 {
 
     public function index()
     {
-        $listKegiatan = DB::table('isi_skpi')->get();
+        $listKegiatan = DB::table('isi_skpi')->where('user_id', Auth::id())->get();
         
         $totalPoin = 0;
         foreach($listKegiatan as $kegiatan) {
@@ -42,6 +44,7 @@ class IsiSkpiController extends Controller
         $request->file_bukti->move(public_path('uploads/skpi'), $fileName);
 
         DB::table('isi_skpi')->insert([
+            'user_id'     => Auth::id(),
             'kategori'    => $request->kategori,
             'jenis'       => $request->jenis ?? 'Mandiri',
             'kegiatan'    => $request->kegiatan,
@@ -68,7 +71,10 @@ class IsiSkpiController extends Controller
 
         $ids = $request->ids;
 
-        DB::table('isi_skpi')->whereIn('id', $ids)->delete();
+        DB::table('isi_skpi')
+            ->whereIn('id', $ids)
+            ->where('user_id', Auth::id()) 
+            ->delete();
 
         return redirect('/isi-skpi')->with('success', 'Data SKPI berhasil dihapus!');
     }

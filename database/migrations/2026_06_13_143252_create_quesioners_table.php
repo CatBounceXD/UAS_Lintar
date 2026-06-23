@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('frekuensi_akses_web');
             $table->text('alasan_akses_web');
 
-           // Kinerja Petugas (p1 - p8) beserta kolom alasannya
             $table->integer('p1');
             $table->integer('p2'); $table->string('alasan_p2')->nullable();
             $table->integer('p3'); $table->string('alasan_p3')->nullable();
@@ -32,7 +31,6 @@ return new class extends Migration
             $table->integer('p7'); $table->string('alasan_p7')->nullable();
             $table->integer('p8'); $table->string('alasan_p8')->nullable();
 
-        // Kualitas Informasi (i1 - i8) beserta kolom alasannya
             $table->integer('i1'); $table->string('alasan_i1')->nullable();
             $table->integer('i2'); $table->string('alasan_i2')->nullable();
             $table->integer('i3');

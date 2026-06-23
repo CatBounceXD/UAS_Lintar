@@ -6,11 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
+public function up(): void
     {
         Schema::create('isi_skpi', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori');    // Kolom kategori (Menjawab error di screenshot)
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('kategori');
             $table->string('jenis')->default('Mandiri');
             $table->string('kegiatan');
             $table->string('tingkat');

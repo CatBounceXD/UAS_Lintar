@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('page') {{-- Menggunakan section 'page' agar sesuai dengan master template --}}
+@section('page')
 <style>
     .skpi-wrapper {
         font-family: Arial, sans-serif;
@@ -71,7 +71,6 @@
         font-weight: bold;
     }
 
-    /* Efek warna baris belang-belang sesuai aturan wajib */
     .skpi-table tr:nth-child(even) {
         background-color: #f1f5f9;
     }

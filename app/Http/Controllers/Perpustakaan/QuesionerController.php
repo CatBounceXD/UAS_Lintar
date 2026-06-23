@@ -1,21 +1,20 @@
 <?php
 
-namespace app\Http\Controllers\Perpustakaan;
+namespace App\Http\Controllers\Perpustakaan;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\perpustakaan\Quesioner;
-
+use App\Models\Perpustakaan\Quesioner;
+use Illuminate\Support\Facades\Auth;
 class QuesionerController extends Controller
 {
     public function index()
     {
-        $quesioner = Quesioner::with('user')->get();
+        $quesioner = Quesioner::with('user')
+                        ->where('user_id', Auth::id())
+                        ->get();
 
-        return view(
-            'perpustakaan.quesioner',
-            compact('quesioner')
-        );
+        return view('perpustakaan.quesioner', compact('quesioner'));
     }
 
     public function create()
@@ -25,16 +24,43 @@ class QuesionerController extends Controller
 
     public function store(Request $request)
     {
-        // Ambil semua data input dari form
-        $data = $request->all();
+        $validated = $request->validate([
+            'frekuensi_kunjungan' => 'required|string|max:255',
+            'alasan_kunjungan'    => 'required|string',
+            'frekuensi_akses_web' => 'required|string|max:255',
+            'alasan_akses_web'    => 'required|string',
+
+            'p1' => 'required|integer',
+            'p2' => 'required|integer', 'alasan_p2' => 'nullable|string|max:255',
+            'p3' => 'required|integer', 'alasan_p3' => 'nullable|string|max:255',
+            'p4' => 'required|integer',
+            'p5' => 'required|integer', 'alasan_p5' => 'nullable|string|max:255',
+            'p6' => 'required|integer', 'alasan_p6' => 'nullable|string|max:255',
+            'p7' => 'required|integer', 'alasan_p7' => 'nullable|string|max:255',
+            'p8' => 'required|integer', 'alasan_p8' => 'nullable|string|max:255',
+
+            'i1' => 'required|integer', 'alasan_i1' => 'nullable|string|max:255',
+            'i2' => 'required|integer', 'alasan_i2' => 'nullable|string|max:255',
+            'i3' => 'required|integer',
+            'i4' => 'required|integer', 'alasan_i4' => 'nullable|string|max:255',
+            'i5' => 'required|integer', 'alasan_i5' => 'nullable|string|max:255',
+            'i6' => 'required|integer',
+            'i7' => 'required|integer',
+            'i8' => 'required|integer', 'alasan_i8' => 'nullable|string|max:255',
+
+            'r1' => 'required|integer', 'alasan_r1' => 'nullable|string|max:255',
+            'r2' => 'required|integer', 'alasan_r2' => 'nullable|string|max:255',
+            'r3' => 'required|integer', 'alasan_r3' => 'nullable|string|max:255',
+            'r4' => 'required|integer', 'alasan_r4' => 'nullable|string|max:255',
+            'r5' => 'required|integer', 'alasan_r5' => 'nullable|string|max:255',
+            'r6' => 'required|integer', 'alasan_r6' => 'nullable|string|max:255',
+            'r7' => 'required|integer', 'alasan_r7' => 'nullable|string|max:255',
+        ]);
         
-        // Ambil ID user yang login, jika belum login otomatis isi dengan id 1 (Siswa 1)
-        $data['user_id'] = auth()->id() ?? 1;
+        $validated['user_id'] = Auth::id();
 
-        // Simpan ke database melalui model
-        Quesioner::create($data);
+        Quesioner::create($validated);
 
-        // Redirect kembali ke halaman daftar kuesioner dengan pesan sukses
         return redirect('/quesioner')->with('success', 'Kuesioner berhasil disimpan!');
     }
 }

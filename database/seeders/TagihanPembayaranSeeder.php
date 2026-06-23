@@ -9,7 +9,7 @@ use App\Models\UangKuliah\TagihanPembayaran;
 class TagihanPembayaranSeeder extends Seeder
 {
     public function run(): void
-    {        // 1. Data BPP (Full Payment)
+    {
         TagihanPembayaran::create([
             'user_id' => 1,
             'no_va' => '1888853525016710',
@@ -24,7 +24,6 @@ class TagihanPembayaranSeeder extends Seeder
             'bayar_nominal' => 5000000,
         ]);
 
-        // 2. Data SKS
         TagihanPembayaran::create([
             'user_id' => 1,
             'no_va' => '1888853525016720',
@@ -39,7 +38,6 @@ class TagihanPembayaranSeeder extends Seeder
             'bayar_nominal' => 8000000,
         ]);
 
-        // 3. Data Uang Kuliah Semester 1
         TagihanPembayaran::create([
             'user_id' => 1,
             'no_va' => '1888853525016700',

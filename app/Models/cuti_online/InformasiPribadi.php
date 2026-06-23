@@ -9,7 +9,6 @@ class InformasiPribadi extends Model
 {
     use HasFactory;
 
-    // Menentukan kolom mana saja yang boleh diisi
     protected $fillable = [
         'nama', 
         'npm', 

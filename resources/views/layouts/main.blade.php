@@ -22,10 +22,9 @@
         gap: 20px; 
     }
 
-    /* --- STYLING PROFIL DI SIDEBAR --- */
     .sidebar-profile { 
         padding: 5px;
-        border-bottom: 3px solid #333; /* Garis merah khas UNTAR di bawahnya */
+        border-bottom: 3px solid #333;
         margin-bottom: 10px;
         text-align: left;
         border-radius: 0 ;

@@ -41,23 +41,33 @@ class SuratPermohonanController extends Controller
             'ipk'   => number_format($ipk, 2) 
         ];
 
-        $riwayatPengajuan = SuratPermohonan::get();
+        $riwayatPengajuan = SuratPermohonan::where('user_id', $authUser->id)->get();
 
         return view('layanan_mahasiswa.surat_permohonan', compact('user', 'riwayatPengajuan'));
     }
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'jenis_surat'       => 'required|string|max:100',
+            'bahasa'            => 'required|string|max:50',
+            'nama_perusahaan'   => 'required|string|max:255',
+            'alamat_perusahaan' => 'required|string',
+            'nim_tambahan'      => 'nullable|string|max:255',
+            'tgl_awal'          => 'required|date',
+            'tgl_akhir'         => 'required|date|after_or_equal:tgl_awal',
+        ]);
+
         SuratPermohonan::create([
             'user_id'           => Auth::id(), 
-            'tanggal'           => date('Y-m-d'), 
-            'jenis_permohonan'  => $request->jenis_surat, 
-            'bahasa'            => $request->bahasa,
-            'nama_perusahaan'   => $request->nama_perusahaan,
-            'alamat_perusahaan' => $request->alamat_perusahaan,
-            'nim_tambahan'      => $request->nim_tambahan,
-            'tgl_awal'          => $request->tgl_awal,
-            'tgl_akhir'         => $request->tgl_akhir,
+            'tanggal'           => now()->format('Y-m-d'),
+            'jenis_permohonan'  => $validated['jenis_surat'], 
+            'bahasa'            => $validated['bahasa'],
+            'nama_perusahaan'   => $validated['nama_perusahaan'],
+            'alamat_perusahaan' => $validated['alamat_perusahaan'],
+            'nim_tambahan'      => $validated['nim_tambahan'],
+            'tgl_awal'          => $validated['tgl_awal'],
+            'tgl_akhir'         => $validated['tgl_akhir'],
         ]);
         
         return redirect('/surat-permohonan')->with('success', 'Surat Permohonan berhasil disubmit.');

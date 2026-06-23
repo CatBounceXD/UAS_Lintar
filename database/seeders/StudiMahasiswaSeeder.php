@@ -10,7 +10,6 @@ class StudiMahasiswaSeeder extends Seeder
     public function run(): void
     {
         $dataStudi = [
-            // ================== DATA SEMESTER GASAL 2025 ==================
             [
                 'user_id'          => 1,
                 'tahun_akademik'   => 'Gasal 2025',
@@ -102,7 +101,6 @@ class StudiMahasiswaSeeder extends Seeder
                 'bobot'            => 2.02,
             ],
 
-            // ================== DATA SEMESTER GENAP 2025 ==================
             [
                 'user_id'          => 1,
                 'tahun_akademik'   => 'Genap 2025',

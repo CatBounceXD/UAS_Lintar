@@ -50,7 +50,7 @@
         }
 
         .ksm-table th {
-            background-color: #c4d7d6; /* Warna header tabel KSM */
+            background-color: #c4d7d6;
             color: #000;
             padding: 8px;
             border: 1px solid #ffffff;
@@ -60,7 +60,7 @@
         .ksm-table td {
             padding: 6px;
             border: 1px solid #ffffff;
-            background-color: #d1e5e4; /* Warna baris tabel KSM */
+            background-color: #d1e5e4;
         }
 
         .ksm-table .row-total {

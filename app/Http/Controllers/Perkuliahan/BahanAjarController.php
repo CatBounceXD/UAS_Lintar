@@ -8,9 +8,6 @@ use App\Http\Controllers\Controller;
 
 class BahanAjarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $materi = \App\Models\Perkuliahan\BahanAjar::all(); 

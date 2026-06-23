@@ -54,12 +54,10 @@
 </style>
 
 <div class="mbkm-container">
-    <!-- Header -->
     <div class="mbkm-header">
         PELAPORAN MBKM - Merdeka Belajar Kampus Merdeka
     </div>
 
-    <!-- Data Mahasiswa -->
     <div class="mbkm-card">
         <div class="mbkm-student-name">
             {{ $user->name ?? 'Siswa 1' }}
@@ -69,7 +67,6 @@
         </div>
     </div>
 
-    <!-- Status MBKM -->
     <div class="mbkm-status-card">
         <div class="mbkm-status-title">
             Tidak Terdaftar di MBKM

@@ -12,8 +12,8 @@
         .uts-table th { background-color: #929a73; color: #000; font-weight: bold; text-align: center; padding: 8px; border: 1px solid #ffffff; }
         .uts-table td { padding: 8px; border: 1px solid #ffffff; color: #000; }
         
-        .row-ganjil { background-color: #c7caff; } /* Ungu kebiruan pucat */
-        .row-genap { background-color: #dce0a3; }  /* Hijau kekuningan pucat */
+        .row-ganjil { background-color: #c7caff; } 
+        .row-genap { background-color: #dce0a3; }  
     </style>
 
     <div class="page-title-banner">AKADEMIK - NILAI UTS</div>

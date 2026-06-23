@@ -6,7 +6,7 @@
     <title>Create an account</title>
     <style>
         body { 
-            background-color: #f3f2f1; /* Warna background Microsoft */
+            background-color: #f3f2f1;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             display: flex; justify-content: center; align-items: center; 
             height: 100vh; margin: 0; 

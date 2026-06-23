@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Biodata\UbahPassword; // <--- Memanggil model dari subfolder Biodata
+use App\Models\Biodata\UbahPassword;
 
 class UbahPasswordSeeder extends Seeder
 {

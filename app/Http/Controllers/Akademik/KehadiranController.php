@@ -15,7 +15,6 @@ class KehadiranController extends Controller
         $user = Auth::user();
         $tahunAkademik = 'Genap 2025';
 
-        // Tarik data studi mahasiswa khusus semester Genap 2025
         $dataKehadiran = StudiMahasiswa::where('user_id', $user->id)
                             ->where('tahun_akademik', $tahunAkademik)
                             ->get();

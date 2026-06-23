@@ -11,7 +11,6 @@ class SkemaPembayaran extends Model
 
     protected $table = 'skema_pembayarans';
 
-    // AMAN & STRICT
     protected $fillable = [
         'user_id',
         'semester_tahun',
