@@ -1,59 +1,74 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Proyek UAS LINTAR
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Proyek ini adalah simulasi web akademik mahasiswa Universitas Tarumanagara (LINTAR) yang dikembangkan menggunakan framework Laravel. Sistem ini dirancang secara dinamis untuk menangani berbagai kebutuhan administratif mahasiswa, mulai dari pencetakan tagihan uang kuliah, pengajuan surat keterangan, hingga manajemen dokumen SKPI.
 
-## About Laravel
+## Kelompok 03
+* 535250154 - Steven Pratama
+* 535250175 - Yael Rehuellah
+* 535250167 - Sekar Aruma Putri
+* 535250177 - Syafiqa Aida Purwati
+* 535250159 - Sumayya Kaylani
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Feature
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. Keamanan dan Autentikasi
+* Modifikasi sistem registrasi bawaan Laravel Breeze untuk menggunakan Nomor Induk Mahasiswa (NIM).
+* Proteksi rute menggunakan Middleware untuk memastikan sistem hanya dapat diakses oleh sesi pengguna yang valid.
+* Pencegahan celah untuk CSRF, Cross Site Scripting dan
+* Penerapan validasi input yang ketat (Form Request Validation) dan perlindungan Mass Assignment pada tingkat Model.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. Feature Akademik
+* Menampilkan informasi krusial seperti Histori Nilai, Kartu Studi Mahasiswa (KSM), Kartu Hasil Studi (KHS), dan Transkrip Nilai.
+* Perhitungan otomatis Indeks Prestasi Kumulatif (IPK) dan Satuan Kredit Semester (SKS) secara real-time yang ditarik langsung dari tabel `studi_mahasiswa`.
 
-## Learning Laravel
+### 3. Feature Uang Kuliah
+* Auto-Generate Tagihan: Tagihan biaya kuliah dan SKS akan diproduksi secara otomatis oleh sistem ketika mahasiswa pertama kali membuka menu keuangan.
+* Nominal tagihan dihitung secara dinamis berdasarkan beban SKS aktual yang diambil oleh mahasiswa tersebut.
+* Fitur pemilihan skema pembayaran (Full Payment atau Termin/Cicilan) yang langsung terintegrasi dengan status tagihan.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 4. Feature Layanan Mahasiswa
+* Form pengajuan Surat Keterangan (untuk keperluan Beasiswa, Magang, dll) yang dilengkapi dengan pratinjau (preview) dokumen secara langsung.
+* Form pengajuan Surat Permohonan dengan validasi kronologi tanggal yang ketat.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 5. Feature SKPI dan Biodata
+* Manajemen Surat Keterangan Pendamping Ijazah (SKPI) yang memungkinkan mahasiswa untuk mengunggah dan mengelola bukti sertifikat kegiatan.
+* Pembaruan data diri secara mandiri, termasuk pembaruan Nomor HP yang aman.
 
-## Laravel Sponsors
+### 6. Feature Perpustakaan
+* Akses ke Katalog Buku dan Katalog Skripsi.
+* Fitur pengisian kuesioner evaluasi layanan perpustakaan yang telah diamankan dari injeksi data.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Panduan Instalasi
 
-### Premium Partners
+Ikuti langkah-langkah di bawah ini untuk menjalankan aplikasi di lingkungan lokal:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. Clone repositori proyek ini ke dalam direktori lokal Anda.
+   ```bash
+   git clone [URL_REPOSITORY_ANDA]
 
-## Contributing
+2. Masuk ke dalam direktori proyek.
+    ``` Bash
+    cd uas_lintar
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Instal seluruh dependensi PHP yang dibutuhkan menggunakan Composer.
+    ```Bash
+    composer install
 
-## Code of Conduct
+4. Buat salinan konfigurasi environment.
+    ```Bash
+    cp .env.example .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. Buka file .env yang baru saja dibuat, lalu sesuaikan kredensial database Anda (`DB_DATABASE`).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. Bangun struktur tabel database beserta data tiruan (dummy data) menggunakan perintah migrasi dan seeder.
+    ```Bash
+    php artisan migrate:fresh --seed
 
-## License
+Catatan: Pastikan langkah ini berhasil tanpa pesan error pelanggaran Foreign Key.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+7. Hidupkan Apache dan MySql dari XAMPP lalu Jalankan server
+    ```Bash
+    php artisan serve
+
+9. Buka browser Anda dan akses aplikasi melalui http://localhost:8000.
